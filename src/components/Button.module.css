@@ -1,0 +1,346 @@
+/**
+ * Button Component CSS Module
+ * Scoped styles for the Button component
+ */
+
+/* ============================================
+   Base Button Styles
+   ============================================ */
+
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-family: 'Schibsted Grotesk', sans-serif;
+  font-weight: 700;
+  white-space: nowrap;
+  user-select: none;
+  outline: none;
+  border: none;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ============================================
+   Button Variants
+   ============================================ */
+
+/* Primary Variant */
+.primary {
+  background-color: #006aff;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.05);
+}
+
+.primary:hover:not(:disabled) {
+  background-color: #3388ff;
+  border-color: rgba(255, 255, 255, 0.08);
+  border-width: 2px;
+  box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.05);
+}
+
+.primary:focus:not(:disabled) {
+  background-color: #3388ff;
+  border-color: rgba(255, 255, 255, 0.16);
+  border-width: 2px;
+}
+
+.primary:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
+}
+
+/* Hover State Variant */
+.hover {
+  background-color: #3388ff;
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.05);
+}
+
+/* Focus State Variant */
+.focus {
+  background-color: #3388ff;
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.16);
+}
+
+/* Dark Variant */
+.dark {
+  background-color: #0a0a09;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.05);
+}
+
+.dark:hover:not(:disabled) {
+  background-color: #2a2a29;
+  border-color: rgba(255, 255, 255, 0.16);
+  border-width: 2px;
+  box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.05);
+}
+
+.dark:focus:not(:disabled) {
+  background-color: #2a2a29;
+  border-color: rgba(255, 255, 255, 0.16);
+  border-width: 2px;
+}
+
+.dark:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
+}
+
+/* Disabled State */
+.disabled,
+.button:disabled {
+  background-color: #f0f0f0;
+  color: #9f9f9f;
+  border: none;
+  box-shadow: none;
+}
+
+/* ============================================
+   Button Sizes
+   ============================================ */
+
+.small {
+  padding: 8px;
+  gap: 4px;
+  font-size: 12px;
+  line-height: 1.33;
+  letter-spacing: 0.32px;
+  min-height: 32px;
+}
+
+.medium {
+  padding: 12px;
+  gap: 4px;
+  font-size: 14px;
+  line-height: 1.43;
+  letter-spacing: 0.16px;
+  min-height: 40px;
+}
+
+.large {
+  padding: 12px;
+  gap: 8px;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0;
+  min-height: 48px;
+}
+
+/* ============================================
+   Button Shapes
+   ============================================ */
+
+.rounded {
+  border-radius: 8px;
+}
+
+.pill {
+  border-radius: 999px;
+}
+
+/* ============================================
+   Icon Styles
+   ============================================ */
+
+.icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconSmall {
+  width: 16px;
+  height: 16px;
+}
+
+.iconMedium {
+  width: 16px;
+  height: 16px;
+}
+
+.iconLarge {
+  width: 24px;
+  height: 24px;
+}
+
+.iconLeft {
+  order: -1;
+}
+
+.iconRight {
+  order: 1;
+}
+
+.iconOnly {
+  aspect-ratio: 1;
+}
+
+/* ============================================
+   Label Styles
+   ============================================ */
+
+.label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.labelText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 0;
+  white-space: pre;
+}
+
+.labelSmall {
+  padding: 0 4px;
+  height: 16px;
+  gap: 8px;
+}
+
+.labelMedium {
+  padding: 0 4px;
+  height: 16px;
+  gap: 8px;
+}
+
+.labelLarge {
+  padding: 0 4px;
+  gap: 8px;
+}
+
+/* ============================================
+   Border Overlay
+   ============================================ */
+
+.borderOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* ============================================
+   Accessibility
+   ============================================ */
+
+.button:focus-visible {
+  outline: 2px solid #006aff;
+  outline-offset: 2px;
+}
+
+.dark:focus-visible {
+  outline-color: #0a0a09;
+}
+
+/* ============================================
+   Utility Classes
+   ============================================ */
+
+.fullWidth {
+  width: 100%;
+}
+
+.loading {
+  position: relative;
+  pointer-events: none;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================
+   Responsive Adjustments
+   ============================================ */
+
+@media (max-width: 768px) {
+  .large {
+    padding: 10px;
+    font-size: 15px;
+  }
+  
+  .medium {
+    padding: 10px;
+    font-size: 13px;
+  }
+  
+  .small {
+    padding: 6px;
+    font-size: 11px;
+  }
+}
+
+/* ============================================
+   Reduced Motion
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .loading::after {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* ============================================
+   High Contrast Mode
+   ============================================ */
+
+@media (prefers-contrast: high) {
+  .button {
+    border-width: 2px !important;
+  }
+}
+
+/* ============================================
+   Dark Mode Support
+   ============================================ */
+
+@media (prefers-color-scheme: dark) {
+  .primary {
+    background-color: #3388ff;
+  }
+  
+  .primary:hover:not(:disabled) {
+    background-color: #5599ff;
+  }
+  
+  .disabled,
+  .button:disabled {
+    background-color: #2a2a2a;
+    color: #666666;
+  }
+}
