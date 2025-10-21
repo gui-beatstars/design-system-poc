@@ -1,0 +1,330 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import { Button } from './Button';
+
+/**
+ * Button component documentation for Storybook and Zeroheight.
+ * 
+ * ## Overview
+ * A flexible button component that supports multiple variants, sizes, and icon configurations.
+ * 
+ * ## Usage
+ * ```tsx
+ * import { Button } from './components/Button';
+ * 
+ * <Button 
+ *   variant="primary" 
+ *   size="large" 
+ *   label="Click me" 
+ *   onClick={() => console.log('clicked')} 
+ * />
+ * ```
+ * 
+ * ## Design System
+ * - **Variants**: primary, hover, focus, disabled, dark
+ * - **Sizes**: large (48px), medium (40px), small (32px)
+ * - **Shapes**: rounded (8px), pill (fully rounded)
+ * - **Icons**: Supports left, right, both, or icon-only configurations
+ */
+const meta = {
+  title: 'Components/Button',
+  component: Button,
+  parameters: {
+    layout: 'centered',
+    docs: {
+      description: {
+        component: 'A versatile button component with multiple variants, sizes, and icon positions.',
+      },
+    },
+  },
+  tags: ['autodocs'],
+  argTypes: {
+    variant: {
+      control: 'select',
+      options: ['primary', 'hover', 'focus', 'disabled', 'dark'],
+      description: 'The button color variant',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'primary' },
+      },
+    },
+    size: {
+      control: 'select',
+      options: ['large', 'medium', 'small'],
+      description: 'The button size',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'large' },
+      },
+    },
+    shape: {
+      control: 'select',
+      options: ['rounded', 'pill'],
+      description: 'The button shape',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'rounded' },
+      },
+    },
+    label: {
+      control: 'text',
+      description: 'Button text label',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'Name me' },
+      },
+    },
+    iconLeft: {
+      control: 'boolean',
+      description: 'Show icon on the left side',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    iconRight: {
+      control: 'boolean',
+      description: 'Show icon on the right side',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    iconOnly: {
+      control: 'boolean',
+      description: 'Icon only mode (no label)',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Disabled state',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    onClick: {
+      action: 'clicked',
+      description: 'Click handler function',
+      table: {
+        type: { summary: '() => void' },
+      },
+    },
+  },
+} satisfies Meta<typeof Button>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+// Primary Stories
+export const Primary: Story = {
+  args: {
+    variant: 'primary',
+    size: 'large',
+    shape: 'rounded',
+    label: 'Name me',
+    iconLeft: true,
+    iconRight: true,
+  },
+};
+
+export const PrimaryPill: Story = {
+  args: {
+    variant: 'primary',
+    size: 'large',
+    shape: 'pill',
+    iconOnly: true,
+    iconRight: true,
+  },
+};
+
+export const PrimaryMedium: Story = {
+  args: {
+    variant: 'primary',
+    size: 'medium',
+    shape: 'rounded',
+    label: 'Name me',
+    iconLeft: true,
+    iconRight: true,
+  },
+};
+
+export const PrimarySmall: Story = {
+  args: {
+    variant: 'primary',
+    size: 'small',
+    shape: 'rounded',
+    label: 'Name me',
+    iconLeft: true,
+    iconRight: true,
+  },
+};
+
+// Hover State Stories
+export const Hover: Story = {
+  args: {
+    variant: 'hover',
+    size: 'large',
+    shape: 'rounded',
+    label: 'Name me',
+    iconLeft: true,
+    iconRight: true,
+  },
+};
+
+export const HoverPill: Story = {
+  args: {
+    variant: 'hover',
+    size: 'large',
+    shape: 'pill',
+    iconOnly: true,
+    iconRight: true,
+  },
+};
+
+// Focus State Stories
+export const Focus: Story = {
+  args: {
+    variant: 'focus',
+    size: 'large',
+    shape: 'rounded',
+    label: 'Name me',
+    iconLeft: true,
+    iconRight: true,
+  },
+};
+
+export const FocusPill: Story = {
+  args: {
+    variant: 'focus',
+    size: 'large',
+    shape: 'pill',
+    iconOnly: true,
+    iconRight: true,
+  },
+};
+
+// Disabled State Stories
+export const Disabled: Story = {
+  args: {
+    variant: 'primary',
+    size: 'large',
+    shape: 'rounded',
+    label: 'Name me',
+    iconLeft: true,
+    iconRight: true,
+    disabled: true,
+  },
+};
+
+export const DisabledPill: Story = {
+  args: {
+    variant: 'primary',
+    size: 'large',
+    shape: 'pill',
+    iconOnly: true,
+    iconRight: true,
+    disabled: true,
+  },
+};
+
+// Dark Variant Stories
+export const Dark: Story = {
+  args: {
+    variant: 'dark',
+    size: 'large',
+    shape: 'rounded',
+    label: 'Name me',
+    iconLeft: true,
+    iconRight: true,
+  },
+  parameters: {
+    backgrounds: { default: 'light' },
+  },
+};
+
+export const DarkPill: Story = {
+  args: {
+    variant: 'dark',
+    size: 'large',
+    shape: 'pill',
+    iconOnly: true,
+    iconRight: true,
+  },
+  parameters: {
+    backgrounds: { default: 'light' },
+  },
+};
+
+// Icon Variations
+export const IconLeftOnly: Story = {
+  args: {
+    variant: 'primary',
+    size: 'large',
+    shape: 'rounded',
+    label: 'Name me',
+    iconLeft: true,
+    iconRight: false,
+  },
+};
+
+export const IconRightOnly: Story = {
+  args: {
+    variant: 'primary',
+    size: 'large',
+    shape: 'rounded',
+    label: 'Name me',
+    iconLeft: false,
+    iconRight: true,
+  },
+};
+
+export const NoIcons: Story = {
+  args: {
+    variant: 'primary',
+    size: 'large',
+    shape: 'rounded',
+    label: 'Name me',
+    iconLeft: false,
+    iconRight: false,
+  },
+};
+
+// Size Comparison
+export const SizeComparison: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+      <Button variant="primary" size="large" label="Large" iconLeft iconRight />
+      <Button variant="primary" size="medium" label="Medium" iconLeft iconRight />
+      <Button variant="primary" size="small" label="Small" iconLeft iconRight />
+    </div>
+  ),
+};
+
+// Variant Comparison
+export const VariantComparison: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', alignItems: 'center' }}>
+      <Button variant="primary" size="large" label="Primary" iconLeft iconRight />
+      <Button variant="hover" size="large" label="Hover" iconLeft iconRight />
+      <Button variant="focus" size="large" label="Focus" iconLeft iconRight />
+      <Button variant="primary" size="large" label="Disabled" iconLeft iconRight disabled />
+      <Button variant="dark" size="large" label="Dark" iconLeft iconRight />
+    </div>
+  ),
+};
+
+// Interactive Playground
+export const Playground: Story = {
+  args: {
+    variant: 'primary',
+    size: 'large',
+    shape: 'rounded',
+    label: 'Click me!',
+    iconLeft: true,
+    iconRight: true,
+    disabled: false,
+  },
+};
