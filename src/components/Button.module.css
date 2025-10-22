@@ -179,14 +179,23 @@
 
 .iconLeft {
   order: -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .iconRight {
   order: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .iconOnly {
   aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ============================================
@@ -198,25 +207,25 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  height: 100%;
 }
 
 .labelText {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  line-height: 0;
+  align-items: center;
+  line-height: 1;
   white-space: pre;
 }
 
 .labelSmall {
   padding: 0 4px;
-  height: 16px;
   gap: 8px;
 }
 
 .labelMedium {
   padding: 0 4px;
-  height: 16px;
   gap: 8px;
 }
 
