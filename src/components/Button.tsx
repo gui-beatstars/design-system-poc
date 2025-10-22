@@ -156,3 +156,6 @@ export const ButtonWithModule: React.FC<ButtonWithModuleProps> = ({
 };
 
 export default Button;
+
+
+export { ButtonWithModule as Button };
