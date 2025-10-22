@@ -1,0 +1,605 @@
+/**
+ * TextInput Component CSS Module
+ * Scoped styles for the TextInput component
+ */
+
+/* ============================================
+   Base Container Styles
+   ============================================ */
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-family: 'Schibsted Grotesk', sans-serif;
+  box-sizing: border-box;
+}
+
+/* ============================================
+   Input Variants
+   ============================================ */
+
+/* Default Variant */
+.default .inputContainer {
+  position: relative;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  background-color: #ffffff;
+  transition: all 0.2s ease-in-out;
+}
+
+.default .inputContainer:hover:not(.disabled) {
+  border-color: #c0c0c0;
+}
+
+.default .inputContainer:focus-within:not(.disabled) {
+  border-color: #006aff;
+  box-shadow: 0 0 0 3px rgba(0, 106, 255, 0.1);
+}
+
+/* Filled Variant */
+.filled .inputContainer {
+  position: relative;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background-color: #f8f9fa;
+  transition: all 0.2s ease-in-out;
+}
+
+.filled .inputContainer:hover:not(.disabled) {
+  background-color: #f0f1f2;
+}
+
+.filled .inputContainer:focus-within:not(.disabled) {
+  background-color: #ffffff;
+  border-color: #006aff;
+  box-shadow: 0 0 0 3px rgba(0, 106, 255, 0.1);
+}
+
+/* Outlined Variant */
+.outlined .inputContainer {
+  position: relative;
+  border-radius: 8px;
+  border: 2px solid #e0e0e0;
+  background-color: transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+.outlined .inputContainer:hover:not(.disabled) {
+  border-color: #c0c0c0;
+}
+
+.outlined .inputContainer:focus-within:not(.disabled) {
+  border-color: #006aff;
+  box-shadow: 0 0 0 3px rgba(0, 106, 255, 0.1);
+}
+
+/* Underlined Variant */
+.underlined .inputContainer {
+  position: relative;
+  border-radius: 0;
+  border: none;
+  border-bottom: 2px solid #e0e0e0;
+  background-color: transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+.underlined .inputContainer:hover:not(.disabled) {
+  border-bottom-color: #c0c0c0;
+}
+
+.underlined .inputContainer:focus-within:not(.disabled) {
+  border-bottom-color: #006aff;
+  box-shadow: 0 2px 0 0 #006aff;
+}
+
+/* ============================================
+   Input Sizes
+   ============================================ */
+
+.small .inputContainer {
+  min-height: 32px;
+  padding: 0 8px;
+}
+
+.medium .inputContainer {
+  min-height: 40px;
+  padding: 0 12px;
+}
+
+.large .inputContainer {
+  min-height: 48px;
+  padding: 0 16px;
+}
+
+/* ============================================
+   Input Field Styles
+   ============================================ */
+
+.input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  color: #1a1a1a;
+  transition: all 0.2s ease-in-out;
+  box-sizing: border-box;
+}
+
+.input::placeholder {
+  color: #9f9f9f;
+  opacity: 1;
+}
+
+.input:disabled {
+  color: #9f9f9f;
+  cursor: not-allowed;
+}
+
+.input:read-only {
+  color: #666666;
+  cursor: default;
+}
+
+/* Input Sizes */
+.inputSmall {
+  font-size: 12px;
+  line-height: 1.33;
+  letter-spacing: 0.32px;
+  padding: 8px 0;
+}
+
+.inputMedium {
+  font-size: 14px;
+  line-height: 1.43;
+  letter-spacing: 0.16px;
+  padding: 10px 0;
+}
+
+.inputLarge {
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0;
+  padding: 12px 0;
+}
+
+/* Input with Icons */
+.inputWithLeftIcon {
+  padding-left: 0;
+}
+
+.inputWithRightIcon {
+  padding-right: 0;
+}
+
+/* ============================================
+   Label Styles
+   ============================================ */
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+  color: #1a1a1a;
+  transition: color 0.2s ease-in-out;
+}
+
+.labelSmall {
+  font-size: 12px;
+  line-height: 1.33;
+  letter-spacing: 0.32px;
+}
+
+.labelMedium {
+  font-size: 14px;
+  line-height: 1.43;
+  letter-spacing: 0.16px;
+}
+
+.labelLarge {
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+.required {
+  position: relative;
+}
+
+.requiredAsterisk {
+  color: #ff4444;
+  font-weight: 600;
+  margin-left: 2px;
+}
+
+.labelError {
+  color: #ff4444;
+}
+
+.labelSuccess {
+  color: #00aa44;
+}
+
+/* ============================================
+   Icon Styles
+   ============================================ */
+
+.iconLeft,
+.iconRight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #666666;
+  transition: color 0.2s ease-in-out;
+}
+
+.iconLeft {
+  margin-right: 8px;
+}
+
+.iconRight {
+  margin-left: 8px;
+}
+
+.small .iconLeft,
+.small .iconRight {
+  width: 16px;
+  height: 16px;
+}
+
+.medium .iconLeft,
+.medium .iconRight {
+  width: 18px;
+  height: 18px;
+}
+
+.large .iconLeft,
+.large .iconRight {
+  width: 20px;
+  height: 20px;
+}
+
+/* ============================================
+   Clear Button
+   ============================================ */
+
+.clearButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #666666;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+  padding: 2px;
+}
+
+.clearButton:hover {
+  color: #1a1a1a;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.clearButton:focus {
+  outline: 2px solid #006aff;
+  outline-offset: 2px;
+}
+
+/* ============================================
+   State Styles
+   ============================================ */
+
+/* Error State */
+.error .inputContainer {
+  border-color: #ff4444 !important;
+  box-shadow: 0 0 0 3px rgba(255, 68, 68, 0.1) !important;
+}
+
+.error .inputContainer:focus-within {
+  border-color: #ff4444 !important;
+  box-shadow: 0 0 0 3px rgba(255, 68, 68, 0.1) !important;
+}
+
+.error .iconLeft,
+.error .iconRight {
+  color: #ff4444;
+}
+
+/* Success State */
+.success .inputContainer {
+  border-color: #00aa44 !important;
+  box-shadow: 0 0 0 3px rgba(0, 170, 68, 0.1) !important;
+}
+
+.success .inputContainer:focus-within {
+  border-color: #00aa44 !important;
+  box-shadow: 0 0 0 3px rgba(0, 170, 68, 0.1) !important;
+}
+
+.success .iconLeft,
+.success .iconRight {
+  color: #00aa44;
+}
+
+/* Disabled State */
+.disabled .inputContainer {
+  background-color: #f8f9fa !important;
+  border-color: #e0e0e0 !important;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.disabled .inputContainer:hover {
+  border-color: #e0e0e0 !important;
+  box-shadow: none !important;
+}
+
+.disabled .inputContainer:focus-within {
+  border-color: #e0e0e0 !important;
+  box-shadow: none !important;
+}
+
+.disabled .iconLeft,
+.disabled .iconRight {
+  color: #9f9f9f;
+}
+
+.disabled .label {
+  color: #9f9f9f;
+}
+
+/* ============================================
+   Helper Text and Footer
+   ============================================ */
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  min-height: 16px;
+}
+
+.helper {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.helperSmall {
+  font-size: 11px;
+  line-height: 1.36;
+  letter-spacing: 0.4px;
+}
+
+.helperMedium {
+  font-size: 12px;
+  line-height: 1.33;
+  letter-spacing: 0.32px;
+}
+
+.helperLarge {
+  font-size: 13px;
+  line-height: 1.31;
+  letter-spacing: 0.24px;
+}
+
+.helperText {
+  color: #666666;
+}
+
+.helperError {
+  color: #ff4444;
+}
+
+.helperSuccess {
+  color: #00aa44;
+}
+
+.errorText {
+  color: #ff4444;
+  font-weight: 500;
+}
+
+.successText {
+  color: #00aa44;
+  font-weight: 500;
+}
+
+/* ============================================
+   Character Count
+   ============================================ */
+
+.count {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.countText {
+  font-size: 12px;
+  line-height: 1.33;
+  letter-spacing: 0.32px;
+  color: #666666;
+  font-weight: 500;
+}
+
+.countError {
+  color: #ff4444;
+}
+
+/* ============================================
+   Utility Classes
+   ============================================ */
+
+.fullWidth {
+  width: 100%;
+}
+
+/* ============================================
+   Focus Management
+   ============================================ */
+
+.input:focus-visible {
+  outline: none;
+}
+
+.inputContainer:focus-within .iconLeft,
+.inputContainer:focus-within .iconRight {
+  color: #006aff;
+}
+
+/* ============================================
+   Responsive Adjustments
+   ============================================ */
+
+@media (max-width: 768px) {
+  .large .inputContainer {
+    min-height: 44px;
+    padding: 0 14px;
+  }
+  
+  .medium .inputContainer {
+    min-height: 38px;
+    padding: 0 10px;
+  }
+  
+  .small .inputContainer {
+    min-height: 30px;
+    padding: 0 6px;
+  }
+  
+  .inputLarge {
+    font-size: 15px;
+    padding: 10px 0;
+  }
+  
+  .inputMedium {
+    font-size: 13px;
+    padding: 8px 0;
+  }
+  
+  .inputSmall {
+    font-size: 11px;
+    padding: 6px 0;
+  }
+}
+
+/* ============================================
+   Reduced Motion
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .container,
+  .inputContainer,
+  .input,
+  .label,
+  .iconLeft,
+  .iconRight,
+  .clearButton {
+    transition: none;
+  }
+}
+
+/* ============================================
+   High Contrast Mode
+   ============================================ */
+
+@media (prefers-contrast: high) {
+  .default .inputContainer,
+  .filled .inputContainer,
+  .outlined .inputContainer {
+    border-width: 2px !important;
+  }
+  
+  .underlined .inputContainer {
+    border-bottom-width: 3px !important;
+  }
+  
+  .input:focus-visible {
+    outline: 2px solid #006aff;
+    outline-offset: 2px;
+  }
+}
+
+/* ============================================
+   Dark Mode Support
+   ============================================ */
+
+@media (prefers-color-scheme: dark) {
+  .default .inputContainer {
+    background-color: #2a2a2a;
+    border-color: #404040;
+  }
+  
+  .default .inputContainer:hover:not(.disabled) {
+    border-color: #555555;
+  }
+  
+  .filled .inputContainer {
+    background-color: #333333;
+  }
+  
+  .filled .inputContainer:hover:not(.disabled) {
+    background-color: #3a3a3a;
+  }
+  
+  .filled .inputContainer:focus-within:not(.disabled) {
+    background-color: #2a2a2a;
+  }
+  
+  .input {
+    color: #ffffff;
+  }
+  
+  .input::placeholder {
+    color: #888888;
+  }
+  
+  .input:disabled {
+    color: #666666;
+  }
+  
+  .label {
+    color: #ffffff;
+  }
+  
+  .label:disabled {
+    color: #666666;
+  }
+  
+  .helperText {
+    color: #888888;
+  }
+  
+  .countText {
+    color: #888888;
+  }
+  
+  .iconLeft,
+  .iconRight {
+    color: #888888;
+  }
+  
+  .clearButton {
+    color: #888888;
+  }
+  
+  .clearButton:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .disabled .inputContainer {
+    background-color: #1a1a1a !important;
+    border-color: #333333 !important;
+  }
+}
