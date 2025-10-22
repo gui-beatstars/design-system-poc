@@ -1,16 +1,11 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useState, useEffect } from 'react';
 import styles from './TextInput.module.css';
 
 export interface TextInputProps {
   /**
-   * The input variant determines the visual style
+   * The input size - S (40px) or M (48px)
    */
-  variant?: 'default' | 'filled' | 'outlined' | 'underlined';
-  
-  /**
-   * The input size
-   */
-  size?: 'small' | 'medium' | 'large';
+  size?: 'S' | 'M';
   
   /**
    * Input type (text, email, password, etc.)
@@ -33,7 +28,7 @@ export interface TextInputProps {
   defaultValue?: string;
   
   /**
-   * Input label
+   * Input label text
    */
   label?: string;
   
@@ -48,39 +43,39 @@ export interface TextInputProps {
   error?: string;
   
   /**
-   * Success message
+   * Input status state
    */
-  success?: string;
+  status?: 'Default' | 'Active' | 'Active-Filling' | 'Filled' | 'Disabled' | 'Error';
   
   /**
-   * Input state
+   * Show label above input
    */
-  state?: 'default' | 'error' | 'success' | 'disabled';
+  hasLabel?: boolean;
   
   /**
-   * Show icon on the left side
+   * Show icon in the right area
    */
-  iconLeft?: React.ReactNode;
+  hasIcon?: boolean;
   
   /**
-   * Show icon on the right side
+   * Custom icon component
    */
-  iconRight?: React.ReactNode;
+  icon?: React.ReactNode;
   
   /**
-   * Show clear button when input has value
+   * Show helper text below input
    */
-  clearable?: boolean;
+  hasBottomHelper?: boolean;
   
   /**
-   * Show character count
+   * Show trailing element (like clear button)
    */
-  showCount?: boolean;
+  showTrailing?: boolean;
   
   /**
-   * Maximum character count
+   * Focus state (controlled)
    */
-  maxLength?: number;
+  focus?: boolean;
   
   /**
    * Disabled state
@@ -128,11 +123,6 @@ export interface TextInputProps {
   onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
   
   /**
-   * Clear handler
-   */
-  onClear?: () => void;
-  
-  /**
    * Additional CSS classes
    */
   className?: string;
@@ -153,27 +143,94 @@ export interface TextInputProps {
   autoComplete?: string;
 }
 
+// Helper Text Component
+const HelperText: React.FC<{ className?: string; showIcon?: boolean; text?: string }> = ({ 
+  className, 
+  showIcon = true, 
+  text = "This is hint text placeholder." 
+}) => {
+  return (
+    <div className={`${styles.helperText} ${className || ''}`}>
+      {showIcon && (
+        <div className={styles.helperIcon}>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M6 11C8.76142 11 11 8.76142 11 6C11 3.23858 8.76142 1 6 1C3.23858 1 1 3.23858 1 6C1 8.76142 3.23858 11 6 11Z"
+              stroke="currentColor"
+              strokeWidth="1"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M6 4V6"
+              stroke="currentColor"
+              strokeWidth="1"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M6 8H6.01"
+              stroke="currentColor"
+              strokeWidth="1"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </div>
+      )}
+      <div className={styles.helperTextContent}>
+        <p>{text}</p>
+      </div>
+    </div>
+  );
+};
+
+// Default Icon Component
+const DefaultIcon: React.FC<{ className?: string }> = ({ className }) => {
+  return (
+    <div className={`${styles.defaultIcon} ${className || ''}`}>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M8 1L10.5 5.5L15.5 6.5L12 10L12.5 15L8 12.5L3.5 15L4 10L0.5 6.5L5.5 5.5L8 1Z"
+          stroke="currentColor"
+          strokeWidth="1"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </div>
+  );
+};
+
+// Cursor Component for Active states
+const Cursor: React.FC<{ className?: string }> = ({ className }) => {
+  return (
+    <div className={`${styles.cursor} ${className || ''}`}>
+      <div className={styles.cursorInner}></div>
+    </div>
+  );
+};
+
 /**
- * TextInput component using CSS Modules for scoped styling.
- * Provides a comprehensive input component with various states, sizes, and variants.
+ * TextInput component matching the exact Figma design.
+ * Supports S (40px) and M (48px) sizes with 6 different states.
  */
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(({
-  variant = 'default',
-  size = 'medium',
+  size = 'M',
   type = 'text',
-  placeholder = '',
+  placeholder = 'Change text here',
   value,
   defaultValue,
-  label = '',
-  helperText = '',
-  error = '',
-  success = '',
-  state = 'default',
-  iconLeft,
-  iconRight,
-  clearable = false,
-  showCount = false,
-  maxLength,
+  label = 'Label',
+  helperText = 'This is hint text placeholder.',
+  error = 'Change error text here',
+  status = 'Default',
+  hasLabel = true,
+  hasIcon = true,
+  icon,
+  hasBottomHelper = true,
+  showTrailing = false,
+  focus = false,
   disabled = false,
   readOnly = false,
   required = false,
@@ -183,186 +240,142 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(({
   onFocus,
   onBlur,
   onKeyDown,
-  onClear,
   className = '',
   name,
   id,
   autoComplete,
 }, ref) => {
-  // Determine the actual state based on props
-  const actualState = error ? 'error' : success ? 'success' : disabled ? 'disabled' : state;
+  const [isFocused, setIsFocused] = useState(false);
+  const [internalValue, setInternalValue] = useState(value || defaultValue || '');
   
-  // Handle clear functionality
-  const handleClear = () => {
-    if (onClear) {
-      onClear();
-    } else if (onChange) {
-      // Create a synthetic event for clearing
-      const syntheticEvent = {
-        target: { value: '' },
-        currentTarget: { value: '' }
-      } as React.ChangeEvent<HTMLInputElement>;
-      onChange(syntheticEvent);
-    }
+  // Determine the actual status based on props and state
+  const actualStatus = disabled ? 'Disabled' : 
+                      error ? 'Error' : 
+                      focus || isFocused ? (internalValue ? 'Active-Filling' : 'Active') :
+                      internalValue ? 'Filled' : status;
+  
+  // Handle focus events
+  const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+    setIsFocused(true);
+    onFocus?.(e);
   };
   
-  // Get character count
-  const currentLength = value?.length || 0;
-  const hasValue = Boolean(value && value.length > 0);
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    setIsFocused(false);
+    onBlur?.(e);
+  };
   
-  // Combine CSS Module classes
+  // Handle change events
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInternalValue(e.target.value);
+    onChange?.(e);
+  };
+  
+  // Container classes
   const containerClasses = [
     styles.container,
-    styles[variant],
-    styles[size],
-    styles[actualState],
+    styles[`size${size}`],
+    styles[`status${actualStatus}`],
     fullWidth && styles.fullWidth,
     className,
   ].filter(Boolean).join(' ');
   
+  // Input container classes
+  const inputContainerClasses = [
+    styles.inputContainer,
+    styles[`inputContainer${size}`],
+    styles[`inputContainer${actualStatus}`],
+  ].filter(Boolean).join(' ');
+  
+  // Input classes
   const inputClasses = [
     styles.input,
-    styles[`input${size.charAt(0).toUpperCase() + size.slice(1)}`],
-    iconLeft && styles.inputWithLeftIcon,
-    (iconRight || (clearable && hasValue)) && styles.inputWithRightIcon,
+    styles[`input${size}`],
+    styles[`input${actualStatus}`],
   ].filter(Boolean).join(' ');
   
+  // Label classes
   const labelClasses = [
     styles.label,
-    styles[`label${size.charAt(0).toUpperCase() + size.slice(1)}`],
+    styles[`label${size}`],
     required && styles.required,
-    actualState === 'error' && styles.labelError,
-    actualState === 'success' && styles.labelSuccess,
   ].filter(Boolean).join(' ');
   
+  // Helper text classes
   const helperClasses = [
     styles.helper,
-    styles[`helper${size.charAt(0).toUpperCase() + size.slice(1)}`],
-    actualState === 'error' && styles.helperError,
-    actualState === 'success' && styles.helperSuccess,
+    styles[`helper${size}`],
   ].filter(Boolean).join(' ');
   
   return (
     <div className={containerClasses}>
       {/* Label */}
-      {label && (
-        <label htmlFor={id} className={labelClasses}>
-          {label}
-          {required && <span className={styles.requiredAsterisk}>*</span>}
-        </label>
+      {hasLabel && (
+        <div className={labelClasses}>
+          <label htmlFor={id}>
+            {label}
+            {required && <span className={styles.requiredAsterisk}>*</span>}
+          </label>
+        </div>
       )}
       
       {/* Input Container */}
-      <div className={styles.inputContainer}>
-        {/* Left Icon */}
-        {iconLeft && (
-          <div className={styles.iconLeft}>
-            {iconLeft}
-          </div>
-        )}
+      <div className={inputContainerClasses}>
+        {/* Text Area */}
+        <div className={styles.textArea}>
+          <input
+            ref={ref}
+            type={type}
+            id={id}
+            name={name}
+            value={value}
+            defaultValue={defaultValue}
+            placeholder={placeholder}
+            disabled={disabled}
+            readOnly={readOnly}
+            required={required}
+            autoFocus={autoFocus}
+            autoComplete={autoComplete}
+            onChange={handleChange}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            onKeyDown={onKeyDown}
+            className={inputClasses}
+            aria-invalid={actualStatus === 'Error'}
+            aria-describedby={
+              [
+                helperText && `${id || name || 'input'}-helper`,
+                error && `${id || name || 'input'}-error`,
+              ].filter(Boolean).join(' ') || undefined
+            }
+          />
+          
+          {/* Cursor for Active states */}
+          {(actualStatus === 'Active' || actualStatus === 'Active-Filling') && (
+            <Cursor />
+          )}
+        </div>
         
-        {/* Input Field */}
-        <input
-          ref={ref}
-          type={type}
-          id={id}
-          name={name}
-          value={value}
-          defaultValue={defaultValue}
-          placeholder={placeholder}
-          disabled={disabled}
-          readOnly={readOnly}
-          required={required}
-          autoFocus={autoFocus}
-          autoComplete={autoComplete}
-          maxLength={maxLength}
-          onChange={onChange}
-          onFocus={onFocus}
-          onBlur={onBlur}
-          onKeyDown={onKeyDown}
-          className={inputClasses}
-          aria-invalid={actualState === 'error'}
-          aria-describedby={
-            [
-              helperText && `${id || name || 'input'}-helper`,
-              error && `${id || name || 'input'}-error`,
-              success && `${id || name || 'input'}-success`,
-              showCount && `${id || name || 'input'}-count`,
-            ].filter(Boolean).join(' ') || undefined
-          }
-        />
-        
-        {/* Right Icon or Clear Button */}
-        {(iconRight || (clearable && hasValue)) && (
-          <div className={styles.iconRight}>
-            {clearable && hasValue ? (
-              <button
-                type="button"
-                className={styles.clearButton}
-                onClick={handleClear}
-                tabIndex={-1}
-                aria-label="Clear input"
-              >
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12 4L4 12M4 4L12 12"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-            ) : (
-              iconRight
-            )}
+        {/* Icon Area */}
+        {hasIcon && (
+          <div className={styles.iconArea}>
+            {icon || <DefaultIcon />}
           </div>
         )}
       </div>
       
-      {/* Helper Text, Error, Success, and Count */}
-      <div className={styles.footer}>
-        {/* Helper Text, Error, or Success */}
-        {(helperText || error || success) && (
-          <div className={helperClasses}>
-            {error && (
-              <span id={`${id || name || 'input'}-error`} className={styles.errorText}>
-                {error}
-              </span>
-            )}
-            {success && !error && (
-              <span id={`${id || name || 'input'}-success`} className={styles.successText}>
-                {success}
-              </span>
-            )}
-            {helperText && !error && !success && (
-              <span id={`${id || name || 'input'}-helper`} className={styles.helperText}>
-                {helperText}
-              </span>
-            )}
-          </div>
-        )}
-        
-        {/* Character Count */}
-        {showCount && maxLength && (
-          <div className={styles.count}>
-            <span
-              id={`${id || name || 'input'}-count`}
-              className={`${styles.countText} ${
-                currentLength > maxLength ? styles.countError : ''
-              }`}
-            >
-              {currentLength}/{maxLength}
-            </span>
-          </div>
-        )}
-      </div>
+      {/* Helper Text or Error */}
+      {hasBottomHelper && (
+        <div className={helperClasses}>
+          {actualStatus === 'Error' ? (
+            <div className={styles.errorText}>
+              <p>{error}</p>
+            </div>
+          ) : (
+            <HelperText text={helperText} />
+          )}
+        </div>
+      )}
     </div>
   );
 });
