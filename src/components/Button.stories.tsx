@@ -1,17 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from './Button';
+import { ButtonWithModule } from './ButtonWithModule';
 
 /**
- * Button component documentation for Storybook and Zeroheight.
+ * ButtonWithModule component - using CSS Modules
  * 
  * ## Overview
- * A flexible button component that supports multiple variants, sizes, and icon configurations.
+ * This is an alternative implementation of the Button component that uses CSS Modules
+ * for scoped styling instead of Tailwind classes.
  * 
  * ## Usage
  * ```tsx
- * import { Button } from './components/Button';
+ * import { ButtonWithModule } from './components/ButtonWithModule';
+ * import styles from './Button.module.css'; // Styles are automatically scoped
  * 
- * <Button 
+ * <ButtonWithModule 
  *   variant="primary" 
  *   size="large" 
  *   label="Click me" 
@@ -19,20 +21,20 @@ import { Button } from './Button';
  * />
  * ```
  * 
- * ## Design System
- * - **Variants**: primary, hover, focus, disabled, dark
- * - **Sizes**: large (48px), medium (40px), small (32px)
- * - **Shapes**: rounded (8px), pill (fully rounded)
- * - **Icons**: Supports left, right, both, or icon-only configurations
+ * ## CSS Modules Benefits
+ * - ✅ Scoped styles (no global namespace pollution)
+ * - ✅ Type-safe with TypeScript
+ * - ✅ Better code splitting
+ * - ✅ No runtime overhead
  */
 const meta = {
-  title: 'Components/Button',
-  component: Button,
+  title: 'Components/ButtonWithModule',
+  component: ButtonWithModule,
   parameters: {
     layout: 'centered',
     docs: {
       description: {
-        component: 'A versatile button component with multiple variants, sizes, and icon positions.',
+        component: 'A button component using CSS Modules for scoped styling. Demonstrates an alternative approach to the Tailwind-based Button component.',
       },
     },
   },
@@ -105,6 +107,22 @@ const meta = {
         defaultValue: { summary: 'false' },
       },
     },
+    fullWidth: {
+      control: 'boolean',
+      description: 'Full width button',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    loading: {
+      control: 'boolean',
+      description: 'Loading state with spinner',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
     onClick: {
       action: 'clicked',
       description: 'Click handler function',
@@ -113,7 +131,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Button>;
+} satisfies Meta<typeof ButtonWithModule>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -162,7 +180,7 @@ export const PrimarySmall: Story = {
   },
 };
 
-// Hover State Stories
+// Hover State
 export const Hover: Story = {
   args: {
     variant: 'hover',
@@ -174,17 +192,7 @@ export const Hover: Story = {
   },
 };
 
-export const HoverPill: Story = {
-  args: {
-    variant: 'hover',
-    size: 'large',
-    shape: 'pill',
-    iconOnly: true,
-    iconRight: true,
-  },
-};
-
-// Focus State Stories
+// Focus State
 export const Focus: Story = {
   args: {
     variant: 'focus',
@@ -196,17 +204,7 @@ export const Focus: Story = {
   },
 };
 
-export const FocusPill: Story = {
-  args: {
-    variant: 'focus',
-    size: 'large',
-    shape: 'pill',
-    iconOnly: true,
-    iconRight: true,
-  },
-};
-
-// Disabled State Stories
+// Disabled State
 export const Disabled: Story = {
   args: {
     variant: 'primary',
@@ -219,18 +217,7 @@ export const Disabled: Story = {
   },
 };
 
-export const DisabledPill: Story = {
-  args: {
-    variant: 'primary',
-    size: 'large',
-    shape: 'pill',
-    iconOnly: true,
-    iconRight: true,
-    disabled: true,
-  },
-};
-
-// Dark Variant Stories
+// Dark Variant
 export const Dark: Story = {
   args: {
     variant: 'dark',
@@ -238,19 +225,6 @@ export const Dark: Story = {
     shape: 'rounded',
     label: 'Name me',
     iconLeft: true,
-    iconRight: true,
-  },
-  parameters: {
-    backgrounds: { default: 'light' },
-  },
-};
-
-export const DarkPill: Story = {
-  args: {
-    variant: 'dark',
-    size: 'large',
-    shape: 'pill',
-    iconOnly: true,
     iconRight: true,
   },
   parameters: {
@@ -292,13 +266,38 @@ export const NoIcons: Story = {
   },
 };
 
+// Loading State
+export const Loading: Story = {
+  args: {
+    variant: 'primary',
+    size: 'large',
+    shape: 'rounded',
+    label: 'Processing...',
+    loading: true,
+  },
+};
+
+// Full Width
+export const FullWidth: Story = {
+  args: {
+    variant: 'primary',
+    size: 'large',
+    shape: 'rounded',
+    label: 'Full Width Button',
+    fullWidth: true,
+  },
+  parameters: {
+    layout: 'padded',
+  },
+};
+
 // Size Comparison
 export const SizeComparison: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-      <Button variant="primary" size="large" label="Large" iconLeft iconRight />
-      <Button variant="primary" size="medium" label="Medium" iconLeft iconRight />
-      <Button variant="primary" size="small" label="Small" iconLeft iconRight />
+      <ButtonWithModule variant="primary" size="large" label="Large" iconLeft iconRight />
+      <ButtonWithModule variant="primary" size="medium" label="Medium" iconLeft iconRight />
+      <ButtonWithModule variant="primary" size="small" label="Small" iconLeft iconRight />
     </div>
   ),
 };
@@ -307,11 +306,11 @@ export const SizeComparison: Story = {
 export const VariantComparison: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', alignItems: 'center' }}>
-      <Button variant="primary" size="large" label="Primary" iconLeft iconRight />
-      <Button variant="hover" size="large" label="Hover" iconLeft iconRight />
-      <Button variant="focus" size="large" label="Focus" iconLeft iconRight />
-      <Button variant="primary" size="large" label="Disabled" iconLeft iconRight disabled />
-      <Button variant="dark" size="large" label="Dark" iconLeft iconRight />
+      <ButtonWithModule variant="primary" size="large" label="Primary" iconLeft iconRight />
+      <ButtonWithModule variant="hover" size="large" label="Hover" iconLeft iconRight />
+      <ButtonWithModule variant="focus" size="large" label="Focus" iconLeft iconRight />
+      <ButtonWithModule variant="primary" size="large" label="Disabled" iconLeft iconRight disabled />
+      <ButtonWithModule variant="dark" size="large" label="Dark" iconLeft iconRight />
     </div>
   ),
 };
@@ -326,5 +325,7 @@ export const Playground: Story = {
     iconLeft: true,
     iconRight: true,
     disabled: false,
+    loading: false,
+    fullWidth: false,
   },
 };

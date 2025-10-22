@@ -1,7 +1,8 @@
 import React from 'react';
+import styles from './Button.module.css';
 import svgPaths from "../imports/svg-zpdog6r5zj";
 
-export interface ButtonProps {
+export interface ButtonWithModuleProps {
   /**
    * The button variant determines the color scheme
    */
@@ -46,97 +47,54 @@ export interface ButtonProps {
    * Disabled state
    */
   disabled?: boolean;
+  
+  /**
+   * Full width button
+   */
+  fullWidth?: boolean;
+  
+  /**
+   * Loading state
+   */
+  loading?: boolean;
+  
+  /**
+   * Additional CSS classes
+   */
+  className?: string;
 }
 
-// Variant configurations
-const variantConfig = {
-  primary: {
-    bg: 'bg-[#006aff]',
-    textColor: 'text-white',
-    iconColor: 'white',
-    border: 'border border-[rgba(255,255,255,0.16)] border-solid',
-    shadow: 'shadow-[0px_2px_2px_0px_rgba(0,0,0,0.05)]',
-    hoverBg: 'hover:bg-[#3388ff]',
-    hoverBorder: 'hover:border-[rgba(255,255,255,0.08)] hover:border-2',
-    hoverShadow: 'hover:shadow-[0px_8px_8px_0px_rgba(0,0,0,0.05)]',
-  },
-  hover: {
-    bg: 'bg-[#3388ff]',
-    textColor: 'text-white',
-    iconColor: 'white',
-    border: 'border-2 border-[rgba(255,255,255,0.08)] border-solid',
-    shadow: 'shadow-[0px_8px_8px_0px_rgba(0,0,0,0.05)]',
-  },
-  focus: {
-    bg: 'bg-[#3388ff]',
-    textColor: 'text-white',
-    iconColor: 'white',
-    border: 'border-2 border-[rgba(255,255,255,0.16)] border-solid',
-    shadow: '',
-  },
-  disabled: {
-    bg: 'bg-[#f0f0f0]',
-    textColor: 'text-[#9f9f9f]',
-    iconColor: '#9f9f9f',
-    border: '',
-    shadow: '',
-  },
-  dark: {
-    bg: 'bg-[#0a0a09]',
-    textColor: 'text-white',
-    iconColor: 'white',
-    border: 'border border-[rgba(255,255,255,0.08)] border-solid',
-    shadow: 'shadow-[0px_2px_2px_0px_rgba(0,0,0,0.05)]',
-    hoverBg: 'hover:bg-[#2a2a29]',
-    hoverBorder: 'hover:border-[rgba(255,255,255,0.16)] hover:border-2',
-    hoverShadow: 'hover:shadow-[0px_8px_8px_0px_rgba(0,0,0,0.05)]',
-  },
-};
-
-// Size configurations
-const sizeConfig = {
-  large: {
-    padding: 'p-[12px]',
-    gap: 'gap-[8px]',
-    iconSize: 24,
-    iconViewBox: "0 0 24 24",
-    iconPath: svgPaths.p78f2a80,
-    labelPadding: 'p-0 px-[4px]',
-    labelGap: 'gap-[8px]',
-    minHeight: 'min-h-[48px]',
-  },
-  medium: {
-    padding: 'p-[12px]',
-    gap: 'gap-[4px]',
-    iconSize: 16,
-    iconViewBox: "0 0 16 16",
-    iconPath: svgPaths.p15e73480,
-    labelPadding: 'p-0 px-[4px]',
-    labelGap: 'gap-[8px]',
-    minHeight: 'min-h-[40px]',
-  },
-  small: {
-    padding: 'p-[8px]',
-    gap: 'gap-[4px]',
-    iconSize: 16,
-    iconViewBox: "0 0 16 16",
-    iconPath: svgPaths.p15e73480,
-    labelPadding: 'p-0 px-[4px]',
-    labelGap: 'gap-[8px]',
-    minHeight: 'min-h-[32px]',
-  },
-};
-
-// Shape configurations
-const shapeConfig = {
-  rounded: 'rounded-[8px]',
-  pill: 'rounded-[999px]',
+const IconComponent: React.FC<{ size: 'small' | 'medium' | 'large'; color: string }> = ({ size, color }) => {
+  const iconSizes = {
+    small: 16,
+    medium: 16,
+    large: 24,
+  };
+  
+  const iconSize = iconSizes[size];
+  const viewBox = iconSize === 24 ? "0 0 24 24" : "0 0 16 16";
+  const pathData = iconSize === 24 ? svgPaths.p78f2a80 : svgPaths.p15e73480;
+  
+  return (
+    <div className={`${styles.icon} ${styles[`icon${size.charAt(0).toUpperCase() + size.slice(1)}`]}`}>
+      <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox={viewBox}>
+        <path 
+          clipRule="evenodd" 
+          d={pathData} 
+          fill={color}
+          fillRule="evenodd"
+          style={{ fillOpacity: "1" }} 
+        />
+      </svg>
+    </div>
+  );
 };
 
 /**
- * Primary UI component for user interaction
+ * Button component using CSS Modules for scoped styling.
+ * This version demonstrates the Button.module.css usage.
  */
-export const Button: React.FC<ButtonProps> = ({
+export const ButtonWithModule: React.FC<ButtonWithModuleProps> = ({
   variant = 'primary',
   size = 'large',
   shape = 'rounded',
@@ -146,71 +104,55 @@ export const Button: React.FC<ButtonProps> = ({
   iconOnly = false,
   onClick,
   disabled = false,
+  fullWidth = false,
+  loading = false,
+  className = '',
 }) => {
-  const variantStyles = variantConfig[disabled ? 'disabled' : variant];
-  const sizeStyles = sizeConfig[size];
-  const shapeStyles = shapeConfig[shape];
-  const iconColor = disabled ? '#9f9f9f' : variantStyles.iconColor;
-
-  const renderIcon = () => (
-    <div className="flex flex-col justify-center shrink-0 self-stretch items-center">
-      <svg
-        className="block"
-        style={{
-          width: `${sizeStyles.iconSize}px`,
-          height: `${sizeStyles.iconSize}px`,
-        }}
-        fill="none"
-        preserveAspectRatio="none"
-        viewBox={sizeStyles.iconViewBox}
-      >
-        <path
-          clipRule="evenodd"
-          d={sizeStyles.iconPath}
-          fill={iconColor}
-          fillRule="evenodd"
-          style={{ fillOpacity: "1" }}
-        />
-      </svg>
-    </div>
-  );
-
+  const iconColor = disabled ? '#9f9f9f' : 'white';
+  
+  // Combine CSS Module classes
+  const buttonClasses = [
+    styles.button,
+    styles[variant],
+    styles[size],
+    styles[shape],
+    iconOnly && styles.iconOnly,
+    fullWidth && styles.fullWidth,
+    loading && styles.loading,
+    disabled && styles.disabled,
+    className,
+  ].filter(Boolean).join(' ');
+  
   return (
     <button
-      className={`
-        flex items-center justify-center box-border shrink-0
-        ${sizeStyles.padding}
-        ${sizeStyles.gap}
-        ${sizeStyles.minHeight}
-        ${variantStyles.bg}
-        ${variantStyles.border}
-        ${variantStyles.shadow}
-        ${shapeStyles}
-        ${variantStyles.hoverBg || ''}
-        ${variantStyles.hoverBorder || ''}
-        ${variantStyles.hoverShadow || ''}
-        transition-all duration-200 ease-in-out
-        ${iconOnly ? 'aspect-square' : ''}
-      `}
-      onClick={disabled ? undefined : onClick}
-      disabled={disabled}
+      className={buttonClasses}
+      onClick={disabled || loading ? undefined : onClick}
+      disabled={disabled || loading}
     >
       {/* Icon Left */}
-      {(iconLeft || iconOnly) && !iconRight && renderIcon()}
+      {(iconLeft || iconOnly) && !iconRight && (
+        <div className={styles.iconLeft}>
+          <IconComponent size={size} color={iconColor} />
+        </div>
+      )}
       
       {/* Label */}
       {!iconOnly && (
-        <div className={`flex items-center justify-center shrink-0 ${sizeStyles.labelPadding} ${sizeStyles.labelGap}`}>
-          <div className="flex flex-col justify-center leading-[0]">
-            <p className={`whitespace-pre ${variantStyles.textColor}`}>{label}</p>
+        <div className={`${styles.label} ${styles[`label${size.charAt(0).toUpperCase() + size.slice(1)}`]}`}>
+          <div className={styles.labelText}>
+            <p>{label}</p>
           </div>
         </div>
       )}
       
       {/* Icon Right */}
-      {iconRight && renderIcon()}
+      {iconRight && (
+        <div className={styles.iconRight}>
+          <IconComponent size={size} color={iconColor} />
+        </div>
+      )}
     </button>
   );
 };
 
-export default Button;
+export default ButtonWithModule;
