@@ -48,28 +48,93 @@ export interface ButtonProps {
   disabled?: boolean;
 }
 
-const IconComponent: React.FC<{ size: number; color: string }> = ({ size, color }) => {
-  const viewBox = size === 24 ? "0 0 24 24" : "0 0 16 16";
-  const pathData = size === 24 ? svgPaths.p78f2a80 : svgPaths.p15e73480;
-  
-  return (
-    <div className="relative shrink-0" style={{ width: size, height: size }}>
-      <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox={viewBox}>
-        <path 
-          clipRule="evenodd" 
-          d={pathData} 
-          fill={color}
-          fillRule="evenodd"
-          style={{ fillOpacity: "1" }} 
-        />
-      </svg>
-    </div>
-  );
+// Variant configurations
+const variantConfig = {
+  primary: {
+    bg: 'bg-[#006aff]',
+    textColor: 'text-white',
+    iconColor: 'white',
+    border: 'border border-[rgba(255,255,255,0.16)] border-solid',
+    shadow: 'shadow-[0px_2px_2px_0px_rgba(0,0,0,0.05)]',
+    hoverBg: 'hover:bg-[#3388ff]',
+    hoverBorder: 'hover:border-[rgba(255,255,255,0.08)] hover:border-2',
+    hoverShadow: 'hover:shadow-[0px_8px_8px_0px_rgba(0,0,0,0.05)]',
+  },
+  hover: {
+    bg: 'bg-[#3388ff]',
+    textColor: 'text-white',
+    iconColor: 'white',
+    border: 'border-2 border-[rgba(255,255,255,0.08)] border-solid',
+    shadow: 'shadow-[0px_8px_8px_0px_rgba(0,0,0,0.05)]',
+  },
+  focus: {
+    bg: 'bg-[#3388ff]',
+    textColor: 'text-white',
+    iconColor: 'white',
+    border: 'border-2 border-[rgba(255,255,255,0.16)] border-solid',
+    shadow: '',
+  },
+  disabled: {
+    bg: 'bg-[#f0f0f0]',
+    textColor: 'text-[#9f9f9f]',
+    iconColor: '#9f9f9f',
+    border: '',
+    shadow: '',
+  },
+  dark: {
+    bg: 'bg-[#0a0a09]',
+    textColor: 'text-white',
+    iconColor: 'white',
+    border: 'border border-[rgba(255,255,255,0.08)] border-solid',
+    shadow: 'shadow-[0px_2px_2px_0px_rgba(0,0,0,0.05)]',
+    hoverBg: 'hover:bg-[#2a2a29]',
+    hoverBorder: 'hover:border-[rgba(255,255,255,0.16)] hover:border-2',
+    hoverShadow: 'hover:shadow-[0px_8px_8px_0px_rgba(0,0,0,0.05)]',
+  },
+};
+
+// Size configurations
+const sizeConfig = {
+  large: {
+    padding: 'p-[12px]',
+    gap: 'gap-[8px]',
+    iconSize: 24,
+    iconViewBox: "0 0 24 24",
+    iconPath: svgPaths.p78f2a80,
+    labelPadding: 'p-0 px-[4px]',
+    labelGap: 'gap-[8px]',
+    minHeight: 'min-h-[48px]',
+  },
+  medium: {
+    padding: 'p-[12px]',
+    gap: 'gap-[4px]',
+    iconSize: 16,
+    iconViewBox: "0 0 16 16",
+    iconPath: svgPaths.p15e73480,
+    labelPadding: 'p-0 px-[4px]',
+    labelGap: 'gap-[8px]',
+    minHeight: 'min-h-[40px]',
+  },
+  small: {
+    padding: 'p-[8px]',
+    gap: 'gap-[4px]',
+    iconSize: 16,
+    iconViewBox: "0 0 16 16",
+    iconPath: svgPaths.p15e73480,
+    labelPadding: 'p-0 px-[4px]',
+    labelGap: 'gap-[8px]',
+    minHeight: 'min-h-[32px]',
+  },
+};
+
+// Shape configurations
+const shapeConfig = {
+  rounded: 'rounded-[8px]',
+  pill: 'rounded-[999px]',
 };
 
 /**
- * Button component with multiple variants, sizes, and icon configurations.
- * Supports Storybook and Zeroheight documentation.
+ * Primary UI component for user interaction
  */
 export const Button: React.FC<ButtonProps> = ({
   variant = 'primary',
@@ -82,123 +147,68 @@ export const Button: React.FC<ButtonProps> = ({
   onClick,
   disabled = false,
 }) => {
-  // Size configurations
-  const sizeConfig = {
-    large: {
-      padding: 'p-[12px]',
-      gap: 'gap-[8px]',
-      iconSize: 24,
-      fontSize: 'text-[16px]',
-      lineHeight: 'leading-[1.5]',
-      tracking: '',
-      labelHeight: '',
-      labelGap: 'gap-[8px]',
-      labelPadding: 'px-[4px] py-0',
-    },
-    medium: {
-      padding: 'p-[12px]',
-      gap: 'gap-[4px]',
-      iconSize: 16,
-      fontSize: 'text-[14px]',
-      lineHeight: 'leading-[1.43]',
-      tracking: 'tracking-[0.16px]',
-      labelHeight: 'h-[16px]',
-      labelGap: 'gap-[8px]',
-      labelPadding: 'px-[4px] py-0',
-    },
-    small: {
-      padding: 'p-[8px]',
-      gap: 'gap-[4px]',
-      iconSize: 16,
-      fontSize: 'text-[12px]',
-      lineHeight: 'leading-[1.33]',
-      tracking: 'tracking-[0.32px]',
-      labelHeight: 'h-[16px]',
-      labelGap: 'gap-[8px]',
-      labelPadding: 'px-[4px] py-0',
-    },
-  };
+  const variantStyles = variantConfig[disabled ? 'disabled' : variant];
+  const sizeStyles = sizeConfig[size];
+  const shapeStyles = shapeConfig[shape];
+  const iconColor = disabled ? '#9f9f9f' : variantStyles.iconColor;
 
-  // Variant configurations
-  const variantConfig = {
-    primary: {
-      bg: 'bg-[#006aff]',
-      textColor: 'text-white',
-      iconColor: 'white',
-      border: 'border border-[rgba(255,255,255,0.16)] border-solid',
-      shadow: 'shadow-[0px_2px_2px_0px_rgba(0,0,0,0.05)]',
-    },
-    hover: {
-      bg: 'bg-[#3388ff]',
-      textColor: 'text-white',
-      iconColor: 'white',
-      border: 'border-2 border-[rgba(255,255,255,0.08)] border-solid',
-      shadow: 'shadow-[0px_8px_8px_0px_rgba(0,0,0,0.05)]',
-    },
-    focus: {
-      bg: 'bg-[#3388ff]',
-      textColor: 'text-white',
-      iconColor: 'white',
-      border: 'border-2 border-[rgba(255,255,255,0.16)] border-solid',
-      shadow: '',
-    },
-    disabled: {
-      bg: 'bg-[#f0f0f0]',
-      textColor: 'text-[#9f9f9f]',
-      iconColor: '#9f9f9f',
-      border: '',
-      shadow: '',
-    },
-    dark: {
-      bg: 'bg-[#0a0a09]',
-      textColor: 'text-white',
-      iconColor: 'white',
-      border: 'border border-[rgba(255,255,255,0.08)] border-solid',
-      shadow: 'shadow-[0px_2px_2px_0px_rgba(0,0,0,0.05)]',
-    },
-  };
-
-  const config = sizeConfig[size];
-  const colors = variantConfig[disabled ? 'disabled' : variant];
-  const borderRadius = shape === 'pill' ? 'rounded-[999px]' : 'rounded-[8px]';
+  const renderIcon = () => (
+    <div className="flex flex-col justify-center shrink-0 self-stretch items-center">
+      <svg
+        className="block"
+        style={{
+          width: `${sizeStyles.iconSize}px`,
+          height: `${sizeStyles.iconSize}px`,
+        }}
+        fill="none"
+        preserveAspectRatio="none"
+        viewBox={sizeStyles.iconViewBox}
+      >
+        <path
+          clipRule="evenodd"
+          d={sizeStyles.iconPath}
+          fill={iconColor}
+          fillRule="evenodd"
+          style={{ fillOpacity: "1" }}
+        />
+      </svg>
+    </div>
+  );
 
   return (
     <button
-      className={`relative ${colors.bg} box-border content-stretch flex ${config.gap} items-center justify-center ${config.padding} ${borderRadius} ${disabled ? 'cursor-not-allowed' : 'cursor-pointer'}`}
+      className={`
+        flex items-center justify-center box-border shrink-0
+        ${sizeStyles.padding}
+        ${sizeStyles.gap}
+        ${sizeStyles.minHeight}
+        ${variantStyles.bg}
+        ${variantStyles.border}
+        ${variantStyles.shadow}
+        ${shapeStyles}
+        ${variantStyles.hoverBg || ''}
+        ${variantStyles.hoverBorder || ''}
+        ${variantStyles.hoverShadow || ''}
+        transition-all duration-200 ease-in-out
+        ${iconOnly ? 'aspect-square' : ''}
+      `}
       onClick={disabled ? undefined : onClick}
       disabled={disabled}
     >
-      {/* Border overlay */}
-      {colors.border && (
-        <div 
-          aria-hidden="true" 
-          className={`absolute ${colors.border} inset-0 pointer-events-none ${borderRadius} ${colors.shadow}`} 
-        />
-      )}
-      
       {/* Icon Left */}
-      {(iconLeft || iconOnly) && !iconRight && (
-        <IconComponent size={config.iconSize} color={colors.iconColor} />
-      )}
+      {(iconLeft || iconOnly) && !iconRight && renderIcon()}
       
       {/* Label */}
       {!iconOnly && (
-        <div className={`box-border content-stretch flex ${config.labelGap} ${config.labelHeight} items-center justify-center ${config.labelPadding} relative shrink-0`}>
-          <div className={`flex flex-col font-['Schibsted_Grotesk:Bold',_sans-serif] font-bold justify-center leading-[0] relative shrink-0 ${config.fontSize} text-nowrap ${colors.textColor} ${config.tracking}`}>
-            <p className={`${config.lineHeight} whitespace-pre`}>{label}</p>
+        <div className={`flex items-center justify-center shrink-0 ${sizeStyles.labelPadding} ${sizeStyles.labelGap}`}>
+          <div className="flex flex-col justify-center leading-[0]">
+            <p className={`whitespace-pre ${variantStyles.textColor}`}>{label}</p>
           </div>
         </div>
       )}
       
       {/* Icon Right */}
-      {iconRight && !iconOnly && (
-        <IconComponent size={config.iconSize} color={colors.iconColor} />
-      )}
-      
-      {/* Icon Only (centered) */}
-      {iconOnly && iconRight && (
-        <IconComponent size={config.iconSize} color={colors.iconColor} />
-      )}
+      {iconRight && renderIcon()}
     </button>
   );
 };
