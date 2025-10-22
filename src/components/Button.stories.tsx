@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ButtonWithModule } from './ButtonWithModule';
+import { Button } from './Button';
 
 /**
- * ButtonWithModule component - using CSS Modules
+ * Button component - using CSS Modules
  * 
  * ## Overview
  * This is an alternative implementation of the Button component that uses CSS Modules
@@ -10,10 +10,10 @@ import { ButtonWithModule } from './ButtonWithModule';
  * 
  * ## Usage
  * ```tsx
- * import { ButtonWithModule } from './components/ButtonWithModule';
+ * import { Button } from './components/Button';
  * import styles from './Button.module.css'; // Styles are automatically scoped
  * 
- * <ButtonWithModule 
+ * <Button 
  *   variant="primary" 
  *   size="large" 
  *   label="Click me" 
@@ -28,8 +28,8 @@ import { ButtonWithModule } from './ButtonWithModule';
  * - ✅ No runtime overhead
  */
 const meta = {
-  title: 'Components/ButtonWithModule',
-  component: ButtonWithModule,
+  title: 'Components/Button',
+  component: Button,
   parameters: {
     layout: 'centered',
     docs: {
@@ -131,7 +131,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof ButtonWithModule>;
+} satisfies Meta<typeof Button>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -295,9 +295,9 @@ export const FullWidth: Story = {
 export const SizeComparison: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-      <ButtonWithModule variant="primary" size="large" label="Large" iconLeft iconRight />
-      <ButtonWithModule variant="primary" size="medium" label="Medium" iconLeft iconRight />
-      <ButtonWithModule variant="primary" size="small" label="Small" iconLeft iconRight />
+      <Button variant="primary" size="large" label="Large" iconLeft iconRight />
+      <Button variant="primary" size="medium" label="Medium" iconLeft iconRight />
+      <Button variant="primary" size="small" label="Small" iconLeft iconRight />
     </div>
   ),
 };
@@ -306,11 +306,11 @@ export const SizeComparison: Story = {
 export const VariantComparison: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', alignItems: 'center' }}>
-      <ButtonWithModule variant="primary" size="large" label="Primary" iconLeft iconRight />
-      <ButtonWithModule variant="hover" size="large" label="Hover" iconLeft iconRight />
-      <ButtonWithModule variant="focus" size="large" label="Focus" iconLeft iconRight />
-      <ButtonWithModule variant="primary" size="large" label="Disabled" iconLeft iconRight disabled />
-      <ButtonWithModule variant="dark" size="large" label="Dark" iconLeft iconRight />
+      <Button variant="primary" size="large" label="Primary" iconLeft iconRight />
+      <Button variant="hover" size="large" label="Hover" iconLeft iconRight />
+      <Button variant="focus" size="large" label="Focus" iconLeft iconRight />
+      <Button variant="primary" size="large" label="Disabled" iconLeft iconRight disabled />
+      <Button variant="dark" size="large" label="Dark" iconLeft iconRight />
     </div>
   ),
 };
