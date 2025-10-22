@@ -159,3 +159,5 @@ export default Button;
 
 
 export { ButtonWithModule as Button };
+
+export { ButtonWithModule as Button };
