@@ -116,7 +116,7 @@ const meta = {
       description: 'Error message',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'Change error text here' },
+        defaultValue: { summary: 'undefined' },
       },
     },
     hasLabel: {

@@ -213,7 +213,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(({
   defaultValue,
   label = 'Label',
   helperText = 'This is hint text placeholder.',
-  error = 'Change error text here',
+  error,
   status = 'Default',
   hasLabel = true,
   hasIcon = true,
@@ -237,8 +237,9 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(({
   const [internalValue, setInternalValue] = useState(value || defaultValue || '');
   
   // Determine the actual status based on props and state
+  const hasError = error && typeof error === 'string' && error.trim() !== '';
   const actualStatus = disabled ? 'Disabled' : 
-                      error ? 'Error' : 
+                      hasError ? 'Error' : 
                       isFocused ? (internalValue ? 'Active-Filling' : 'Active') :
                       internalValue ? 'Filled' : status;
   

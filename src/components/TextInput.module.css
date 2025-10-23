@@ -458,7 +458,7 @@
    ============================================ */
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  .container {
     --fills-primary-fill-01: #1a1a1a;
     --fills-primary-fill-04: #2a2a2a;
     --fills-negative-negative-silent: #3a1a1a;
