@@ -185,15 +185,15 @@ const HelperText: React.FC<{ className?: string; showIcon?: boolean; text?: stri
   );
 };
 
-// Default Icon Component
+// Default Icon Component - Plus/Add icon from Figma
 const DefaultIcon: React.FC<{ className?: string }> = ({ className }) => {
   return (
     <div className={`${styles.defaultIcon} ${className || ''}`}>
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
-          d="M8 1L10.5 5.5L15.5 6.5L12 10L12.5 15L8 12.5L3.5 15L4 10L0.5 6.5L5.5 5.5L8 1Z"
+          d="M8 1V15M1 8H15"
           stroke="currentColor"
-          strokeWidth="1"
+          strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"
         />

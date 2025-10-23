@@ -320,8 +320,8 @@
 }
 
 .defaultIcon {
-  position: absolute;
-  inset: 14.687%;
+  position: relative;
+  flex-shrink: 0;
   width: 16px;
   height: 16px;
   color: var(--font-icon-primary-secondary);
@@ -464,6 +464,7 @@
 
 .statusDisabled .defaultIcon {
   color: var(--font-icon-primary-tertiary);
+  opacity: 0.6;
 }
 
 /* ============================================
