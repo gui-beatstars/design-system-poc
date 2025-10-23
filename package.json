@@ -60,6 +60,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "chromatic": "npx chromatic --project-token=chpt_7fe0580942790d6",
-    "deploy": "git add . && git commit -m 'Updated components' && npx chromatic --project-token=chpt_7fe0580942790d6"
+    "deploy": "git add . && git commit -m 'Updated components' && npx chromatic --project-token=chpt_7fe0580942790d6",
+    "deploy:github": "git add . && git commit -m 'Deploy Storybook to GitHub Pages' && git push origin main"
   }
 }
