@@ -25,3 +25,20 @@ dist-ssr
 
 *storybook.log
 storybook-static
+build-storybook.log
+temp.*
+
+# GitHub Pages deployment files (these are copied from storybook-static)
+# We need them in the root for GitHub Pages, but they're generated files
+/assets/
+/sb-addons/
+/sb-common-assets/
+/sb-manager/
+/favicon-wrapper.svg
+/favicon.svg
+/iframe.html
+/index.html
+/index.json
+/nunito-sans-*.woff2
+/project.json
+/vite-inject-mocker-entry.js
