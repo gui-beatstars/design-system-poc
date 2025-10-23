@@ -147,30 +147,28 @@
   padding: var(--spacing-sp-4);
 }
 
-/* State variants - Exact from Figma */
+/* State variants - Fixed to prevent layout shifting */
 .inputContainerDefault {
   border: 1px solid var(--outline-primary-silent);
   background-color: var(--fills-primary-fill-01);
 }
 
 .inputContainerActive {
-  border: 2px solid var(--outline-interactive-interactive-loud);
+  border: 1px solid var(--outline-interactive-interactive-loud);
   background-color: var(--fills-primary-fill-01);
+  box-shadow: 0 0 0 1px var(--outline-interactive-interactive-loud);
 }
 
-.inputContainerActive-Filling {
-  border: 1px solid var(--outline-primary-silent);
+.inputContainerFocus {
+  border: 1px solid var(--outline-interactive-interactive-loud);
   background-color: var(--fills-primary-fill-01);
-}
-
-.inputContainerFilled {
-  border: 1px solid var(--outline-primary-silent);
-  background-color: var(--fills-primary-fill-01);
+  box-shadow: 0 0 0 1px var(--outline-interactive-interactive-loud);
 }
 
 .inputContainerError {
-  border: 2px solid var(--outline-negative-negative-loud);
+  border: 1px solid var(--outline-negative-negative-loud);
   background-color: var(--fills-negative-negative-silent);
+  box-shadow: 0 0 0 1px var(--outline-negative-negative-loud);
 }
 
 .inputContainerDisabled {
@@ -218,20 +216,16 @@
   padding: 0;
 }
 
-/* Input States - Exact from Figma */
+/* Input States - Simplified and fixed */
 .inputDefault {
   color: var(--font-icon-primary-tertiary);
 }
 
 .inputActive {
-  color: var(--font-icon-primary-tertiary);
-}
-
-.inputActive-Filling {
   color: var(--font-icon-primary-primary);
 }
 
-.inputFilled {
+.inputFocus {
   color: var(--font-icon-primary-primary);
 }
 
@@ -400,8 +394,9 @@
   outline: none;
 }
 
-.inputContainer:focus-within:not(.inputContainerDisabled) {
-  box-shadow: 0 0 0 3px rgba(0, 106, 255, 0.1);
+.inputContainer:focus-within:not(.inputContainerDisabled):not(.inputContainerError) {
+  border: 1px solid var(--outline-interactive-interactive-loud);
+  box-shadow: 0 0 0 1px var(--outline-interactive-interactive-loud);
 }
 
 /* ============================================

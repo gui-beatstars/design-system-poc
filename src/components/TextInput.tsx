@@ -45,7 +45,7 @@ export interface TextInputProps {
   /**
    * Input status state
    */
-  status?: 'Default' | 'Active' | 'Active-Filling' | 'Filled' | 'Disabled' | 'Error';
+  status?: 'Default' | 'Active' | 'Focus' | 'Error' | 'Disabled';
   
   /**
    * Show label above input
@@ -203,7 +203,7 @@ const Cursor: React.FC<{ className?: string }> = ({ className }) => {
 
 /**
  * TextInput component matching the exact Figma design.
- * Supports S (40px) and M (48px) sizes with 6 different states.
+ * Supports S (40px) and M (48px) sizes with 5 different states.
  */
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(({
   size = 'M',
@@ -240,8 +240,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(({
   const hasError = error && typeof error === 'string' && error.trim() !== '';
   const actualStatus = disabled ? 'Disabled' : 
                       hasError ? 'Error' : 
-                      isFocused ? (internalValue ? 'Active-Filling' : 'Active') :
-                      internalValue ? 'Filled' : status;
+                      isFocused ? 'Focus' : status;
   
   // Handle focus events
   const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
@@ -331,10 +330,6 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(({
             }
           />
           
-          {/* Cursor for Active states */}
-          {(actualStatus === 'Active' || actualStatus === 'Active-Filling') && (
-            <Cursor />
-          )}
         </div>
         
         {/* Icon Area */}

@@ -25,12 +25,13 @@ import { TextInput } from './TextInput';
  * 
  * ## Features
  * - ✅ Two sizes: S (40px) and M (48px)
- * - ✅ Four states: Default, Filled, Error, Disabled
+ * - ✅ Five states: Default, Active, Focus, Error, Disabled
  * - ✅ Exact Figma design tokens and styling
- * - ✅ Icon support with default star icon
+ * - ✅ Icon support with default plus icon
  * - ✅ Helper text with info icon
  * - ✅ Error states with custom styling
  * - ✅ Full accessibility support
+ * - ✅ No layout shifting between states
  */
 
 // Custom Icon Component for stories
@@ -53,7 +54,7 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: 'A TextInput component that exactly matches the Figma design specifications. Supports S (40px) and M (48px) sizes with 4 different states.',
+        component: 'A TextInput component that exactly matches the Figma design specifications. Supports S (40px) and M (48px) sizes with 5 different states.',
       },
     },
   },
@@ -70,7 +71,7 @@ const meta = {
     },
     status: {
       control: 'select',
-      options: ['Default', 'Filled', 'Disabled', 'Error'],
+      options: ['Default', 'Active', 'Focus', 'Error', 'Disabled'],
       description: 'The input status state',
       table: {
         type: { summary: 'string' },
@@ -249,10 +250,10 @@ export const SizeM: Story = {
 // Status Stories - Size S
 // ============================================
 
-export const SizeSFilled: Story = {
+export const SizeSActive: Story = {
   args: {
     size: 'S',
-    status: 'Filled',
+    status: 'Active',
     label: 'Label',
     placeholder: 'Change text here',
     value: 'Sample text',
@@ -294,10 +295,10 @@ export const SizeSDisabled: Story = {
 // Status Stories - Size M
 // ============================================
 
-export const SizeMFilled: Story = {
+export const SizeMActive: Story = {
   args: {
     size: 'M',
-    status: 'Filled',
+    status: 'Active',
     label: 'Label',
     placeholder: 'Change text here',
     value: 'Sample text',
@@ -502,10 +503,20 @@ export const StatusComparison: Story = {
       />
       <TextInput
         size="M"
-        status="Filled"
-        label="Filled"
-        placeholder="Filled state"
+        status="Active"
+        label="Active"
+        placeholder="Active state"
         value="Sample text"
+        hasLabel={true}
+        hasIcon={true}
+        hasBottomHelper={true}
+      />
+      <TextInput
+        size="M"
+        status="Focus"
+        label="Focus"
+        placeholder="Focus state"
+        value="Focused text"
         hasLabel={true}
         hasIcon={true}
         hasBottomHelper={true}
