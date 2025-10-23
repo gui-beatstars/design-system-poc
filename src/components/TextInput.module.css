@@ -1,6 +1,6 @@
 /**
- * TextInput Component CSS Module - Matching Figma Design
- * Exact implementation of the Figma TextInput component
+ * TextInput Component CSS Module - Exact Figma Design Match
+ * Based on the Figma design specifications from node 9321:2523
  */
 
 /* ============================================
@@ -8,7 +8,7 @@
    ============================================ */
 
 :root {
-  /* Colors */
+  /* Colors - Exact from Figma */
   --fills-primary-fill-01: #ffffff;
   --fills-primary-fill-04: #f0f0f0;
   --fills-negative-negative-silent: #fce8e8;
@@ -23,7 +23,7 @@
   --font-icon-primary-tertiary: #9f9f9f;
   --font-icon-negative-negative: #e50000;
   
-  /* Spacing */
+  /* Spacing - Exact from Figma */
   --spacing-sp-0: 0px;
   --spacing-sp-2: 4px;
   --spacing-sp-3: 8px;
@@ -32,21 +32,21 @@
   /* Border Radius */
   --radi-2: 8px;
   
-  /* Font Families */
+  /* Font Families - Exact from Figma */
   --font-family-schibsted-grotesk: 'Schibsted Grotesk', sans-serif;
   --font-family-poppins: 'Poppins', sans-serif;
   
-  /* Font Sizes */
+  /* Font Sizes - Exact from Figma */
   --font-size-xs: 12px;
   --font-size-sm: 14px;
   --font-size-base: 16px;
   
-  /* Letter Spacing */
+  /* Letter Spacing - Exact from Figma */
   --letter-spacing-base: 0.32px;
   --letter-spacing-sm: 0.16px;
   --letter-spacing-md: 0px;
   
-  /* Line Heights */
+  /* Line Heights - Exact from Figma */
   --line-height-xs: 1.33;
   --line-height-sm: 1.43;
   --line-height-base: 1.5;
@@ -63,21 +63,9 @@
   align-items: center;
   justify-content: center;
   gap: var(--spacing-sp-2);
-  width: 255px;
+  width: 100%;
   font-family: var(--font-family-schibsted-grotesk);
   box-sizing: border-box;
-}
-
-/* ============================================
-   Size Variants
-   ============================================ */
-
-.sizeS {
-  width: 255px;
-}
-
-.sizeM {
-  width: 255px;
 }
 
 .fullWidth {
@@ -85,7 +73,7 @@
 }
 
 /* ============================================
-   Label Styles
+   Label Styles - Exact Figma Match
    ============================================ */
 
 .label {
@@ -100,14 +88,6 @@
   flex-shrink: 0;
 }
 
-.labelS {
-  height: 16px;
-}
-
-.labelM {
-  height: 16px;
-}
-
 .label label {
   display: flex;
   flex: 1 0 0;
@@ -117,21 +97,15 @@
   min-height: 0;
   min-width: 0;
   font-family: var(--font-family-schibsted-grotesk);
-  font-weight: 600;
+  font-weight: 600; /* Semibold */
+  font-size: var(--font-size-sm);
+  letter-spacing: var(--letter-spacing-sm);
   line-height: 0;
   color: var(--font-icon-primary-primary);
   text-align: left;
   flex-shrink: 0;
-}
-
-.labelS label {
-  font-size: var(--font-size-sm);
-  letter-spacing: var(--letter-spacing-sm);
-}
-
-.labelM label {
-  font-size: var(--font-size-sm);
-  letter-spacing: var(--letter-spacing-sm);
+  margin: 0;
+  cursor: pointer;
 }
 
 .label p {
@@ -147,7 +121,7 @@
 }
 
 /* ============================================
-   Input Container Styles
+   Input Container Styles - Exact Figma Match
    ============================================ */
 
 .inputContainer {
@@ -162,6 +136,7 @@
   width: 100%;
 }
 
+/* Size variants */
 .inputContainerS {
   height: 40px;
   padding: var(--spacing-sp-4);
@@ -172,21 +147,25 @@
   padding: var(--spacing-sp-4);
 }
 
-/* Input Container States */
+/* State variants - Exact from Figma */
 .inputContainerDefault {
   border: 1px solid var(--outline-primary-silent);
+  background-color: var(--fills-primary-fill-01);
 }
 
 .inputContainerActive {
   border: 2px solid var(--outline-interactive-interactive-loud);
+  background-color: var(--fills-primary-fill-01);
 }
 
 .inputContainerActive-Filling {
   border: 1px solid var(--outline-primary-silent);
+  background-color: var(--fills-primary-fill-01);
 }
 
 .inputContainerFilled {
   border: 1px solid var(--outline-primary-silent);
+  background-color: var(--fills-primary-fill-01);
 }
 
 .inputContainerError {
@@ -200,7 +179,7 @@
 }
 
 /* ============================================
-   Text Area Styles
+   Text Area Styles - Exact Figma Match
    ============================================ */
 
 .textArea {
@@ -216,7 +195,7 @@
 }
 
 /* ============================================
-   Input Field Styles
+   Input Field Styles - Exact Figma Match
    ============================================ */
 
 .input {
@@ -226,6 +205,8 @@
   line-height: 0;
   font-family: var(--font-family-schibsted-grotesk);
   font-weight: 400;
+  font-size: var(--font-size-base);
+  letter-spacing: var(--letter-spacing-md);
   border: none;
   outline: none;
   background: transparent;
@@ -233,19 +214,11 @@
   flex-shrink: 0;
   white-space: nowrap;
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.inputS {
-  font-size: var(--font-size-base);
-  letter-spacing: var(--letter-spacing-md);
-}
-
-.inputM {
-  font-size: var(--font-size-base);
-  letter-spacing: var(--letter-spacing-md);
-}
-
-/* Input States */
+/* Input States - Exact from Figma */
 .inputDefault {
   color: var(--font-icon-primary-tertiary);
 }
@@ -280,7 +253,7 @@
 }
 
 /* ============================================
-   Cursor Styles (for Active states)
+   Cursor Styles - Exact Figma Match
    ============================================ */
 
 .cursor {
@@ -307,7 +280,7 @@
 }
 
 /* ============================================
-   Icon Area Styles
+   Icon Area Styles - Exact Figma Match
    ============================================ */
 
 .iconArea {
@@ -327,8 +300,13 @@
   color: var(--font-icon-primary-secondary);
 }
 
+.defaultIconDisabled {
+  color: var(--font-icon-primary-tertiary);
+  opacity: 0.6;
+}
+
 /* ============================================
-   Helper Text Styles
+   Helper Text Styles - Exact Figma Match
    ============================================ */
 
 .helper {
@@ -339,14 +317,6 @@
   justify-content: center;
   flex-shrink: 0;
   width: 100%;
-}
-
-.helperS {
-  gap: var(--spacing-sp-3);
-}
-
-.helperM {
-  gap: var(--spacing-sp-3);
 }
 
 .helperText {
@@ -376,10 +346,10 @@
   min-width: 0;
   font-family: var(--font-family-schibsted-grotesk);
   font-weight: 400;
-  line-height: 0;
-  color: var(--font-icon-primary-secondary);
   font-size: var(--font-size-xs);
   letter-spacing: var(--letter-spacing-base);
+  line-height: 0;
+  color: var(--font-icon-primary-secondary);
   flex-shrink: 0;
 }
 
@@ -390,7 +360,7 @@
 }
 
 /* ============================================
-   Error Text Styles
+   Error Text Styles - Exact Figma Match
    ============================================ */
 
 .errorText {
@@ -423,51 +393,6 @@
 }
 
 /* ============================================
-   Status-specific Styles
-   ============================================ */
-
-/* Default Status */
-.statusDefault .inputContainer {
-  border: 1px solid var(--outline-primary-silent);
-  background-color: var(--fills-primary-fill-01);
-}
-
-/* Active Status */
-.statusActive .inputContainer {
-  border: 2px solid var(--outline-interactive-interactive-loud);
-  background-color: var(--fills-primary-fill-01);
-}
-
-/* Active-Filling Status */
-.statusActive-Filling .inputContainer {
-  border: 1px solid var(--outline-primary-silent);
-  background-color: var(--fills-primary-fill-01);
-}
-
-/* Filled Status */
-.statusFilled .inputContainer {
-  border: 1px solid var(--outline-primary-silent);
-  background-color: var(--fills-primary-fill-01);
-}
-
-/* Error Status */
-.statusError .inputContainer {
-  border: 2px solid var(--outline-negative-negative-loud);
-  background-color: var(--fills-negative-negative-silent);
-}
-
-/* Disabled Status */
-.statusDisabled .inputContainer {
-  border: 1px solid var(--outline-primary-extra-silent);
-  background-color: var(--fills-primary-fill-04);
-}
-
-.statusDisabled .defaultIcon {
-  color: var(--font-icon-primary-tertiary);
-  opacity: 0.6;
-}
-
-/* ============================================
    Focus States
    ============================================ */
 
@@ -486,7 +411,6 @@
 @media (max-width: 768px) {
   .container {
     width: 100%;
-    max-width: 255px;
   }
   
   .inputContainerS {

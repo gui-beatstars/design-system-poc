@@ -1,4 +1,4 @@
-import React, { forwardRef, useState, useEffect } from 'react';
+import React, { forwardRef, useState } from 'react';
 import styles from './TextInput.module.css';
 
 export interface TextInputProps {
@@ -68,16 +68,6 @@ export interface TextInputProps {
   hasBottomHelper?: boolean;
   
   /**
-   * Show trailing element (like clear button)
-   */
-  showTrailing?: boolean;
-  
-  /**
-   * Focus state (controlled)
-   */
-  focus?: boolean;
-  
-  /**
    * Disabled state
    */
   disabled?: boolean;
@@ -143,7 +133,7 @@ export interface TextInputProps {
   autoComplete?: string;
 }
 
-// Helper Text Component
+// Helper Text Component - matches Figma exactly
 const HelperText: React.FC<{ className?: string; showIcon?: boolean; text?: string }> = ({ 
   className, 
   showIcon = true, 
@@ -186,9 +176,9 @@ const HelperText: React.FC<{ className?: string; showIcon?: boolean; text?: stri
 };
 
 // Default Icon Component - Plus/Add icon from Figma
-const DefaultIcon: React.FC<{ className?: string }> = ({ className }) => {
+const DefaultIcon: React.FC<{ className?: string; disabled?: boolean }> = ({ className, disabled = false }) => {
   return (
-    <div className={`${styles.defaultIcon} ${className || ''}`}>
+    <div className={`${styles.defaultIcon} ${disabled ? styles.defaultIconDisabled : ''} ${className || ''}`}>
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M8 1V15M1 8H15"
@@ -229,8 +219,6 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(({
   hasIcon = true,
   icon,
   hasBottomHelper = true,
-  showTrailing = false,
-  focus = false,
   disabled = false,
   readOnly = false,
   required = false,
@@ -251,7 +239,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(({
   // Determine the actual status based on props and state
   const actualStatus = disabled ? 'Disabled' : 
                       error ? 'Error' : 
-                      focus || isFocused ? (internalValue ? 'Active-Filling' : 'Active') :
+                      isFocused ? (internalValue ? 'Active-Filling' : 'Active') :
                       internalValue ? 'Filled' : status;
   
   // Handle focus events
@@ -275,7 +263,6 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(({
   const containerClasses = [
     styles.container,
     styles[`size${size}`],
-    styles[`status${actualStatus}`],
     fullWidth && styles.fullWidth,
     className,
   ].filter(Boolean).join(' ');
@@ -297,14 +284,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(({
   // Label classes
   const labelClasses = [
     styles.label,
-    styles[`label${size}`],
     required && styles.required,
-  ].filter(Boolean).join(' ');
-  
-  // Helper text classes
-  const helperClasses = [
-    styles.helper,
-    styles[`helper${size}`],
   ].filter(Boolean).join(' ');
   
   return (
@@ -359,14 +339,14 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(({
         {/* Icon Area */}
         {hasIcon && (
           <div className={styles.iconArea}>
-            {icon || <DefaultIcon />}
+            {icon || <DefaultIcon disabled={disabled} />}
           </div>
         )}
       </div>
       
       {/* Helper Text or Error */}
       {hasBottomHelper && (
-        <div className={helperClasses}>
+        <div className={styles.helper}>
           {actualStatus === 'Error' ? (
             <div className={styles.errorText}>
               <p>{error}</p>
