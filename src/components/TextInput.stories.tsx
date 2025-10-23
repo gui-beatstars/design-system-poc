@@ -25,12 +25,11 @@ import { TextInput } from './TextInput';
  * 
  * ## Features
  * - ✅ Two sizes: S (40px) and M (48px)
- * - ✅ Six states: Default, Active, Active-Filling, Filled, Error, Disabled
+ * - ✅ Four states: Default, Filled, Error, Disabled
  * - ✅ Exact Figma design tokens and styling
  * - ✅ Icon support with default star icon
  * - ✅ Helper text with info icon
  * - ✅ Error states with custom styling
- * - ✅ Blinking cursor for active states
  * - ✅ Full accessibility support
  */
 
@@ -54,7 +53,7 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: 'A TextInput component that exactly matches the Figma design specifications. Supports S (40px) and M (48px) sizes with 6 different states.',
+        component: 'A TextInput component that exactly matches the Figma design specifications. Supports S (40px) and M (48px) sizes with 4 different states.',
       },
     },
   },
@@ -71,7 +70,7 @@ const meta = {
     },
     status: {
       control: 'select',
-      options: ['Default', 'Active', 'Active-Filling', 'Filled', 'Disabled', 'Error'],
+      options: ['Default', 'Filled', 'Disabled', 'Error'],
       description: 'The input status state',
       table: {
         type: { summary: 'string' },
@@ -250,43 +249,6 @@ export const SizeM: Story = {
 // Status Stories - Size S
 // ============================================
 
-export const SizeSDefault: Story = {
-  args: {
-    size: 'S',
-    status: 'Default',
-    label: 'Label',
-    placeholder: 'Change text here',
-    hasLabel: true,
-    hasIcon: true,
-    hasBottomHelper: true,
-  },
-};
-
-export const SizeSActive: Story = {
-  args: {
-    size: 'S',
-    status: 'Active',
-    label: 'Label',
-    placeholder: 'Change text here',
-    hasLabel: true,
-    hasIcon: true,
-    hasBottomHelper: true,
-  },
-};
-
-export const SizeSActiveFilling: Story = {
-  args: {
-    size: 'S',
-    status: 'Active-Filling',
-    label: 'Label',
-    placeholder: 'Change text here',
-    value: 'Sample text',
-    hasLabel: true,
-    hasIcon: true,
-    hasBottomHelper: true,
-  },
-};
-
 export const SizeSFilled: Story = {
   args: {
     size: 'S',
@@ -331,43 +293,6 @@ export const SizeSDisabled: Story = {
 // ============================================
 // Status Stories - Size M
 // ============================================
-
-export const SizeMDefault: Story = {
-  args: {
-    size: 'M',
-    status: 'Default',
-    label: 'Label',
-    placeholder: 'Change text here',
-    hasLabel: true,
-    hasIcon: true,
-    hasBottomHelper: true,
-  },
-};
-
-export const SizeMActive: Story = {
-  args: {
-    size: 'M',
-    status: 'Active',
-    label: 'Label',
-    placeholder: 'Change text here',
-    hasLabel: true,
-    hasIcon: true,
-    hasBottomHelper: true,
-  },
-};
-
-export const SizeMActiveFilling: Story = {
-  args: {
-    size: 'M',
-    status: 'Active-Filling',
-    label: 'Label',
-    placeholder: 'Change text here',
-    value: 'Sample text',
-    hasLabel: true,
-    hasIcon: true,
-    hasBottomHelper: true,
-  },
-};
 
 export const SizeMFilled: Story = {
   args: {
@@ -571,25 +496,6 @@ export const StatusComparison: Story = {
         status="Default"
         label="Default"
         placeholder="Default state"
-        hasLabel={true}
-        hasIcon={true}
-        hasBottomHelper={true}
-      />
-      <TextInput
-        size="M"
-        status="Active"
-        label="Active"
-        placeholder="Active state"
-        hasLabel={true}
-        hasIcon={true}
-        hasBottomHelper={true}
-      />
-      <TextInput
-        size="M"
-        status="Active-Filling"
-        label="Active-Filling"
-        placeholder="Active-Filling state"
-        value="Sample text"
         hasLabel={true}
         hasIcon={true}
         hasBottomHelper={true}

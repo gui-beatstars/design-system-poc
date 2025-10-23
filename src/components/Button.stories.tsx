@@ -42,7 +42,7 @@ const meta = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['primary', 'hover', 'focus', 'disabled', 'dark'],
+      options: ['primary'],
       description: 'The button color variant',
       table: {
         type: { summary: 'string' },
@@ -180,29 +180,6 @@ export const PrimarySmall: Story = {
   },
 };
 
-// Hover State
-export const Hover: Story = {
-  args: {
-    variant: 'hover',
-    size: 'large',
-    shape: 'rounded',
-    label: 'Name me',
-    iconLeft: true,
-    iconRight: true,
-  },
-};
-
-// Focus State
-export const Focus: Story = {
-  args: {
-    variant: 'focus',
-    size: 'large',
-    shape: 'rounded',
-    label: 'Name me',
-    iconLeft: true,
-    iconRight: true,
-  },
-};
 
 // Disabled State
 export const Disabled: Story = {
@@ -217,20 +194,6 @@ export const Disabled: Story = {
   },
 };
 
-// Dark Variant
-export const Dark: Story = {
-  args: {
-    variant: 'dark',
-    size: 'large',
-    shape: 'rounded',
-    label: 'Name me',
-    iconLeft: true,
-    iconRight: true,
-  },
-  parameters: {
-    backgrounds: { default: 'light' },
-  },
-};
 
 // Icon Variations
 export const IconLeftOnly: Story = {
@@ -302,15 +265,13 @@ export const SizeComparison: Story = {
   ),
 };
 
-// Variant Comparison
-export const VariantComparison: Story = {
+// State Comparison
+export const StateComparison: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', alignItems: 'center' }}>
-      <Button variant="primary" size="large" label="Primary" iconLeft iconRight />
-      <Button variant="hover" size="large" label="Hover" iconLeft iconRight />
-      <Button variant="focus" size="large" label="Focus" iconLeft iconRight />
+      <Button variant="primary" size="large" label="Default" iconLeft iconRight />
       <Button variant="primary" size="large" label="Disabled" iconLeft iconRight disabled />
-      <Button variant="dark" size="large" label="Dark" iconLeft iconRight />
+      <Button variant="primary" size="large" label="Loading" iconLeft iconRight loading />
     </div>
   ),
 };
