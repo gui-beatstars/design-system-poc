@@ -1,0 +1,76 @@
+{
+  "Letter spacing": {
+    "12px": {
+      "$type": "number",
+      "$value": 0.32
+    },
+    "14px": {
+      "$type": "number",
+      "$value": 0.16
+    },
+    "16px": {
+      "$type": "number",
+      "$value": 0
+    },
+    "20px": {
+      "$type": "number",
+      "$value": 0
+    },
+    "24px": {
+      "$type": "number",
+      "$value": 0
+    },
+    "28px": {
+      "$type": "number",
+      "$value": 0
+    },
+    "32px": {
+      "$type": "number",
+      "$value": 0
+    }
+  },
+  "Size": {
+    "12px": {
+      "$type": "number",
+      "$value": 12
+    },
+    "14px": {
+      "$type": "number",
+      "$value": 14
+    },
+    "16px": {
+      "$type": "number",
+      "$value": 16
+    },
+    "20px": {
+      "$type": "number",
+      "$value": 20
+    },
+    "24px": {
+      "$type": "number",
+      "$value": 24
+    },
+    "28px": {
+      "$type": "number",
+      "$value": 28
+    },
+    "32px": {
+      "$type": "number",
+      "$value": 32
+    }
+  },
+  "Weight": {
+    "Regular": {
+      "$type": "string",
+      "$value": "Regular"
+    },
+    "Semibold": {
+      "$type": "string",
+      "$value": "Semibold"
+    }
+  },
+  "font-family": {
+    "$type": "string",
+    "$value": "Schibsted Grotesk"
+  }
+}
