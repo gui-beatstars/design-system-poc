@@ -1,0 +1,162 @@
+{
+  "Corner radius": {
+    "cr-0": {
+      "$type": "number",
+      "$value": 0
+    },
+    "cr-12": {
+      "$type": "number",
+      "$value": 12
+    },
+    "cr-16": {
+      "$type": "number",
+      "$value": 16
+    },
+    "cr-20": {
+      "$type": "number",
+      "$value": 20
+    },
+    "cr-24": {
+      "$type": "number",
+      "$value": 24
+    },
+    "cr-32": {
+      "$type": "number",
+      "$value": 32
+    },
+    "cr-4": {
+      "$type": "number",
+      "$value": 4
+    },
+    "cr-8": {
+      "$type": "number",
+      "$value": 8
+    },
+    "cr-full": {
+      "$type": "number",
+      "$value": 999
+    }
+  },
+  "Spacing": {
+    "sp-0": {
+      "$type": "number",
+      "$value": 0
+    },
+    "sp-1": {
+      "$type": "number",
+      "$value": 2
+    },
+    "sp-10": {
+      "$type": "number",
+      "$value": 56
+    },
+    "sp-11": {
+      "$type": "number",
+      "$value": 64
+    },
+    "sp-12": {
+      "$type": "number",
+      "$value": 80
+    },
+    "sp-13": {
+      "$type": "number",
+      "$value": 72
+    },
+    "sp-14": {
+      "$type": "number",
+      "$value": 88
+    },
+    "sp-2": {
+      "$type": "number",
+      "$value": 4
+    },
+    "sp-3": {
+      "$type": "number",
+      "$value": 8
+    },
+    "sp-4": {
+      "$type": "number",
+      "$value": 12
+    },
+    "sp-5": {
+      "$type": "number",
+      "$value": 16
+    },
+    "sp-6": {
+      "$type": "number",
+      "$value": 24
+    },
+    "sp-7": {
+      "$type": "number",
+      "$value": 32
+    },
+    "sp-8": {
+      "$type": "number",
+      "$value": 40
+    },
+    "sp-9": {
+      "$type": "number",
+      "$value": 48
+    }
+  },
+  "Stroke Width": {
+    "sw-05": {
+      "$type": "number",
+      "$value": 0.5
+    },
+    "sw-1": {
+      "$type": "number",
+      "$value": 1
+    },
+    "sw-15": {
+      "$type": "number",
+      "$value": 1.5
+    },
+    "sw-2": {
+      "$type": "number",
+      "$value": 2
+    },
+    "sw-4": {
+      "$type": "number",
+      "$value": 4
+    },
+    "sw-6": {
+      "$type": "number",
+      "$value": 6
+    },
+    "sw-8": {
+      "$type": "number",
+      "$value": 8
+    }
+  },
+  "Stroke width": {
+    "sw-05": {
+      "$type": "number",
+      "$value": 0.5
+    },
+    "sw-2": {
+      "$type": "number",
+      "$value": 1
+    },
+    "sw-3": {
+      "$type": "number",
+      "$value": 1.5
+    },
+    "sw-4": {
+      "$type": "number",
+      "$value": 2
+    },
+    "sw-5": {
+      "$type": "number",
+      "$value": 4
+    },
+    "sw-6": {
+      "$type": "number",
+      "$value": 6
+    },
+    "sw-7": {
+      "$type": "number",
+      "$value": 8
+    }
+  }
+}

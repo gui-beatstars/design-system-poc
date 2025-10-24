@@ -1,0 +1,276 @@
+{
+  "Brand Colors": {
+    "BeatStars Red": {
+      "$type": "color",
+      "$value": "#eb0000"
+    }
+  },
+  "Neutrals": {
+    "Beutral-Gray100": {
+      "$type": "color",
+      "$value": "#141414"
+    },
+    "Neutral-Black": {
+      "$type": "color",
+      "$value": "#0a0a09"
+    },
+    "Neutral-Gray05": {
+      "$type": "color",
+      "$value": "#fafafa"
+    },
+    "Neutral-Gray10": {
+      "$type": "color",
+      "$value": "#f6f6f6"
+    },
+    "Neutral-Gray20": {
+      "$type": "color",
+      "$value": "#f0f0f0"
+    },
+    "Neutral-Gray30": {
+      "$type": "color",
+      "$value": "#e8e8e8"
+    },
+    "Neutral-Gray40": {
+      "$type": "color",
+      "$value": "#cccccc"
+    },
+    "Neutral-Gray50": {
+      "$type": "color",
+      "$value": "#b8b8b8"
+    },
+    "Neutral-Gray60": {
+      "$type": "color",
+      "$value": "#9f9f9f"
+    },
+    "Neutral-Gray70": {
+      "$type": "color",
+      "$value": "#707070"
+    },
+    "Neutral-Gray80": {
+      "$type": "color",
+      "$value": "#383838"
+    },
+    "Neutral-Gray90": {
+      "$type": "color",
+      "$value": "#262626"
+    },
+    "Neutral-Gray95": {
+      "$type": "color",
+      "$value": "#1a1a1a"
+    },
+    "Neutral-White": {
+      "$type": "color",
+      "$value": "#ffffff"
+    }
+  },
+  "Primary Blue": {
+    "Blue-10": {
+      "$type": "color",
+      "$value": "#f2f7fe"
+    },
+    "Blue-20": {
+      "$type": "color",
+      "$value": "#e3efff"
+    },
+    "Blue-30": {
+      "$type": "color",
+      "$value": "#64a5ff"
+    },
+    "Blue-50": {
+      "$type": "color",
+      "$value": "#3388ff"
+    },
+    "Blue-60": {
+      "$type": "color",
+      "$value": "#006aff"
+    },
+    "Blue-80": {
+      "$type": "color",
+      "$value": "#07244c"
+    },
+    "Blue-90": {
+      "$type": "color",
+      "$value": "#081c39"
+    }
+  },
+  "Semantic Green": {
+    "Green-10": {
+      "$type": "color",
+      "$value": "#edf7f2"
+    },
+    "Green-20": {
+      "$type": "color",
+      "$value": "#bcf5d7"
+    },
+    "Green-30": {
+      "$type": "color",
+      "$value": "#79ecaf"
+    },
+    "Green-50": {
+      "$type": "color",
+      "$value": "#00d362"
+    },
+    "Green-60": {
+      "$type": "color",
+      "$value": "#04ac51"
+    },
+    "Green-80": {
+      "$type": "color",
+      "$value": "#0a4324"
+    },
+    "Green-90": {
+      "$type": "color",
+      "$value": "#0a2a19"
+    }
+  },
+  "Semantic Orange": {
+    "Orange-10": {
+      "$type": "color",
+      "$value": "#fef7f2"
+    },
+    "Orange-20": {
+      "$type": "color",
+      "$value": "#fce0cc"
+    },
+    "Orange-30": {
+      "$type": "color",
+      "$value": "#ffb37d"
+    },
+    "Orange-50": {
+      "$type": "color",
+      "$value": "#ff8731"
+    },
+    "Orange-60": {
+      "$type": "color",
+      "$value": "#f06400"
+    },
+    "Orange-80": {
+      "$type": "color",
+      "$value": "#803500"
+    },
+    "Orange-90": {
+      "$type": "color",
+      "$value": "#461d00"
+    }
+  },
+  "Semantic Pink": {
+    "Orange-10": {
+      "$type": "color",
+      "$value": "#fef2f6"
+    },
+    "Orange-20": {
+      "$type": "color",
+      "$value": "#fcccde"
+    },
+    "Orange-30": {
+      "$type": "color",
+      "$value": "#ff7dad"
+    },
+    "Orange-50": {
+      "$type": "color",
+      "$value": "#ff317d"
+    },
+    "Orange-60": {
+      "$type": "color",
+      "$value": "#f00058"
+    },
+    "Orange-80": {
+      "$type": "color",
+      "$value": "#80002f"
+    },
+    "Orange-90": {
+      "$type": "color",
+      "$value": "#46001a"
+    }
+  },
+  "Semantic Red": {
+    "Red-10": {
+      "$type": "color",
+      "$value": "#fce8e8"
+    },
+    "Red-20": {
+      "$type": "color",
+      "$value": "#fad1d1"
+    },
+    "Red-30": {
+      "$type": "color",
+      "$value": "#ff6666"
+    },
+    "Red-50": {
+      "$type": "color",
+      "$value": "#f04242"
+    },
+    "Red-60": {
+      "$type": "color",
+      "$value": "#e50000"
+    },
+    "Red-80": {
+      "$type": "color",
+      "$value": "#450808"
+    },
+    "Red-90": {
+      "$type": "color",
+      "$value": "#2b0808"
+    }
+  },
+  "Semantic Violet": {
+    "Orange-10": {
+      "$type": "color",
+      "$value": "#f7f2fe"
+    },
+    "Orange-20": {
+      "$type": "color",
+      "$value": "#e0ccfc"
+    },
+    "Orange-30": {
+      "$type": "color",
+      "$value": "#b37dff"
+    },
+    "Orange-50": {
+      "$type": "color",
+      "$value": "#8731ff"
+    },
+    "Orange-60": {
+      "$type": "color",
+      "$value": "#6400f0"
+    },
+    "Orange-80": {
+      "$type": "color",
+      "$value": "#350080"
+    },
+    "Orange-90": {
+      "$type": "color",
+      "$value": "#1d0046"
+    }
+  },
+  "Semantic Yellow": {
+    "Yellow-10": {
+      "$type": "color",
+      "$value": "#fff8dd"
+    },
+    "Yellow-20": {
+      "$type": "color",
+      "$value": "#fff1b7"
+    },
+    "Yellow-30": {
+      "$type": "color",
+      "$value": "#ffe372"
+    },
+    "Yellow-50": {
+      "$type": "color",
+      "$value": "#ffd633"
+    },
+    "Yellow-60": {
+      "$type": "color",
+      "$value": "#f9c806"
+    },
+    "Yellow-80": {
+      "$type": "color",
+      "$value": "#4f420d"
+    },
+    "Yellow-90": {
+      "$type": "color",
+      "$value": "#2f2707"
+    }
+  }
+}

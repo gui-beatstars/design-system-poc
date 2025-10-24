@@ -1,0 +1,502 @@
+{
+  "Fills": {
+    "Attention": {
+      "Attention Loud": {
+        "$type": "color",
+        "$value": "{Semantic Yellow.Yellow-50}"
+      },
+      "Attention Loud Hover": {
+        "$type": "color",
+        "$value": "{Semantic Yellow.Yellow-30}"
+      },
+      "Attention Silent": {
+        "$type": "color",
+        "$value": "{Semantic Yellow.Yellow-90}"
+      },
+      "Attention Silent Hover": {
+        "$type": "color",
+        "$value": "{Semantic Yellow.Yellow-80}"
+      }
+    },
+    "Expressive": {
+      "Expressive Loud": {
+        "$type": "color",
+        "$value": "{Semantic Violet.Orange-50}"
+      },
+      "Expressive Loud Hover": {
+        "$type": "color",
+        "$value": "{Semantic Violet.Orange-30}"
+      },
+      "Expressive Silent": {
+        "$type": "color",
+        "$value": "{Semantic Violet.Orange-90}"
+      },
+      "Expressive Silent Hover": {
+        "$type": "color",
+        "$value": "{Semantic Violet.Orange-80}"
+      }
+    },
+    "Interactive": {
+      "Interactive Contrast": {
+        "$type": "color",
+        "$value": "{Primary Blue.Blue-60}"
+      },
+      "Interactive Contrast Loud Hover": {
+        "$type": "color",
+        "$value": "{Primary Blue.Blue-50}"
+      },
+      "Interactive Contrast Silent": {
+        "$type": "color",
+        "$value": "{Primary Blue.Blue-10}"
+      },
+      "Interactive Contrast Silent Hover": {
+        "$type": "color",
+        "$value": "{Primary Blue.Blue-20}"
+      },
+      "Interactive Loud": {
+        "$type": "color",
+        "$value": "{Primary Blue.Blue-60}"
+      },
+      "Interactive Loud Hover": {
+        "$type": "color",
+        "$value": "{Primary Blue.Blue-50}"
+      },
+      "Interactive Silent": {
+        "$type": "color",
+        "$value": "{Primary Blue.Blue-90}"
+      },
+      "Interactive Silent Hover": {
+        "$type": "color",
+        "$value": "{Primary Blue.Blue-80}"
+      }
+    },
+    "Negative": {
+      "Negative Loud": {
+        "$type": "color",
+        "$value": "{Semantic Red.Red-50}"
+      },
+      "Negative Loud Hover": {
+        "$type": "color",
+        "$value": "{Semantic Red.Red-30}"
+      },
+      "Negative Silent": {
+        "$type": "color",
+        "$value": "{Semantic Red.Red-90}"
+      },
+      "Negative Silent Hover": {
+        "$type": "color",
+        "$value": "{Semantic Red.Red-80}"
+      }
+    },
+    "Positive": {
+      "Positive Loud": {
+        "$type": "color",
+        "$value": "{Semantic Green.Green-50}"
+      },
+      "Positive Loud Hover": {
+        "$type": "color",
+        "$value": "{Semantic Green.Green-30}"
+      },
+      "Positive Silent": {
+        "$type": "color",
+        "$value": "{Semantic Green.Green-90}"
+      },
+      "Positive Silent Hover": {
+        "$type": "color",
+        "$value": "{Semantic Green.Green-80}"
+      }
+    },
+    "Primary": {
+      "Contrast": {
+        "$type": "color",
+        "$value": "{Neutrals.Neutral-White}"
+      },
+      "Fill 01": {
+        "$type": "color",
+        "$value": "{Neutrals.Beutral-Gray100}"
+      },
+      "Fill 02": {
+        "$type": "color",
+        "$value": "{Neutrals.Neutral-Gray95}"
+      },
+      "Fill 03": {
+        "$type": "color",
+        "$value": "{Neutrals.Neutral-Black}"
+      },
+      "Fill 04": {
+        "$type": "color",
+        "$value": "{Neutrals.Neutral-Gray90}"
+      },
+      "Fill 05": {
+        "$type": "color",
+        "$value": "{Neutrals.Neutral-Gray80}"
+      },
+      "Main Background": {
+        "$type": "color",
+        "$value": "{Neutrals.Neutral-Black}"
+      }
+    },
+    "Secondary": {
+      "Interactive": {
+        "$type": "color",
+        "$value": "{Neutrals.Neutral-Gray90}"
+      },
+      "Interactive Hover": {
+        "$type": "color",
+        "$value": "{Neutrals.Neutral-Gray80}"
+      }
+    },
+    "Warning": {
+      "Warning Loud": {
+        "$type": "color",
+        "$value": "{Semantic Orange.Orange-50}"
+      },
+      "Warning Loud Hover": {
+        "$type": "color",
+        "$value": "{Semantic Orange.Orange-30}"
+      },
+      "Warning Silent": {
+        "$type": "color",
+        "$value": "{Semantic Orange.Orange-90}"
+      },
+      "Warning Silent Hover": {
+        "$type": "color",
+        "$value": "{Semantic Orange.Orange-80}"
+      }
+    }
+  },
+  "Font & Icon": {
+    "Attention": {
+      "Attention": {
+        "$type": "color",
+        "$value": "{Semantic Yellow.Yellow-50}"
+      },
+      "Attention Loud": {
+        "$type": "color",
+        "$value": "{Semantic Yellow.Yellow-30}"
+      }
+    },
+    "Expressive": {
+      "Expressive": {
+        "$type": "color",
+        "$value": "{Semantic Violet.Orange-50}"
+      },
+      "Expressive Loud": {
+        "$type": "color",
+        "$value": "{Semantic Violet.Orange-30}"
+      }
+    },
+    "Interactive": {
+      "Interactive": {
+        "$type": "color",
+        "$value": "{Primary Blue.Blue-50}"
+      },
+      "Interactive Contrast": {
+        "$type": "color",
+        "$value": "{Primary Blue.Blue-60}"
+      },
+      "Interactive Contrast Loud": {
+        "$type": "color",
+        "$value": "{Primary Blue.Blue-80}"
+      },
+      "Interactive Loud": {
+        "$type": "color",
+        "$value": "{Primary Blue.Blue-30}"
+      }
+    },
+    "Negative": {
+      "Negative": {
+        "$type": "color",
+        "$value": "{Semantic Red.Red-50}"
+      },
+      "Negative Loud": {
+        "$type": "color",
+        "$value": "{Semantic Red.Red-30}"
+      }
+    },
+    "Positive": {
+      "Positive": {
+        "$type": "color",
+        "$value": "{Semantic Green.Green-50}"
+      },
+      "Positive Loud": {
+        "$type": "color",
+        "$value": "{Semantic Green.Green-30}"
+      }
+    },
+    "Primary": {
+      "Disabled": {
+        "$type": "color",
+        "$value": "{Neutrals.Neutral-Gray80}"
+      },
+      "Disabled-Contrast": {
+        "$type": "color",
+        "$value": "{Neutrals.Neutral-Gray40}"
+      },
+      "Inverted": {
+        "$type": "color",
+        "$value": "{Neutrals.Neutral-Black}"
+      },
+      "Primary": {
+        "$type": "color",
+        "$value": "{Neutrals.Neutral-White}"
+      },
+      "Secondary": {
+        "$type": "color",
+        "$value": "{Neutrals.Neutral-Gray60}"
+      },
+      "Tertiary": {
+        "$type": "color",
+        "$value": "{Neutrals.Neutral-Gray70}"
+      }
+    },
+    "Warning": {
+      "Warning": {
+        "$type": "color",
+        "$value": "{Semantic Orange.Orange-50}"
+      },
+      "Warning Loud": {
+        "$type": "color",
+        "$value": "{Semantic Orange.Orange-30}"
+      }
+    }
+  },
+  "Opacity": {
+    "Dark&Light": {
+      "0%": {
+        "$type": "color",
+        "$value": "#ffffff00"
+      },
+      "16%": {
+        "$type": "color",
+        "$value": "#ffffff29"
+      },
+      "24%": {
+        "$type": "color",
+        "$value": "#ffffff3d"
+      },
+      "32%": {
+        "$type": "color",
+        "$value": "#ffffff52"
+      },
+      "4%": {
+        "$type": "color",
+        "$value": "#ffffff0a"
+      },
+      "40%": {
+        "$type": "color",
+        "$value": "#ffffff66"
+      },
+      "48%": {
+        "$type": "color",
+        "$value": "#ffffff7a"
+      },
+      "64%": {
+        "$type": "color",
+        "$value": "#ffffffa3"
+      },
+      "8%": {
+        "$type": "color",
+        "$value": "#ffffff14"
+      },
+      "Inverted 0%": {
+        "$type": "color",
+        "$value": "#00000000"
+      },
+      "Inverted 16%": {
+        "$type": "color",
+        "$value": "#00000029"
+      },
+      "Inverted 24%": {
+        "$type": "color",
+        "$value": "#0000003d"
+      },
+      "Inverted 32%": {
+        "$type": "color",
+        "$value": "#00000052"
+      },
+      "Inverted 4%": {
+        "$type": "color",
+        "$value": "#0000000a"
+      },
+      "Inverted 40%": {
+        "$type": "color",
+        "$value": "#00000066"
+      },
+      "Inverted 48%": {
+        "$type": "color",
+        "$value": "#0000007a"
+      },
+      "Inverted 64%": {
+        "$type": "color",
+        "$value": "#000000a3"
+      },
+      "Inverted 8%": {
+        "$type": "color",
+        "$value": "#00000014"
+      }
+    },
+    "Neutral": {
+      "Black 0%": {
+        "$type": "color",
+        "$value": "#00000000"
+      },
+      "Black 16%": {
+        "$type": "color",
+        "$value": "#00000029"
+      },
+      "Black 24%": {
+        "$type": "color",
+        "$value": "#0000003d"
+      },
+      "Black 32%": {
+        "$type": "color",
+        "$value": "#00000052"
+      },
+      "Black 4%": {
+        "$type": "color",
+        "$value": "#0000000a"
+      },
+      "Black 40%": {
+        "$type": "color",
+        "$value": "#00000066"
+      },
+      "Black 48%": {
+        "$type": "color",
+        "$value": "#0000007a"
+      },
+      "Black 64%": {
+        "$type": "color",
+        "$value": "#000000a3"
+      },
+      "Black 8%": {
+        "$type": "color",
+        "$value": "#00000014"
+      },
+      "White 0%": {
+        "$type": "color",
+        "$value": "#ffffff00"
+      },
+      "White 16%": {
+        "$type": "color",
+        "$value": "#ffffff29"
+      },
+      "White 24%": {
+        "$type": "color",
+        "$value": "#ffffff3d"
+      },
+      "White 32%": {
+        "$type": "color",
+        "$value": "#ffffff52"
+      },
+      "White 4%": {
+        "$type": "color",
+        "$value": "#ffffff0a"
+      },
+      "White 40%": {
+        "$type": "color",
+        "$value": "#ffffff66"
+      },
+      "White 48%": {
+        "$type": "color",
+        "$value": "#ffffff7a"
+      },
+      "White 64%": {
+        "$type": "color",
+        "$value": "#ffffffa3"
+      },
+      "White 8%": {
+        "$type": "color",
+        "$value": "#ffffff14"
+      }
+    }
+  },
+  "Outline": {
+    "Attention": {
+      "Attention Loud": {
+        "$type": "color",
+        "$value": "{Semantic Yellow.Yellow-60}"
+      },
+      "Attention Silent": {
+        "$type": "color",
+        "$value": "{Semantic Yellow.Yellow-80}"
+      }
+    },
+    "Expressive": {
+      "Expressive Loud": {
+        "$type": "color",
+        "$value": "{Semantic Violet.Orange-60}"
+      },
+      "Expressive Silent": {
+        "$type": "color",
+        "$value": "{Semantic Violet.Orange-80}"
+      }
+    },
+    "Interactive": {
+      "Interactive Loud": {
+        "$type": "color",
+        "$value": "{Primary Blue.Blue-60}"
+      },
+      "Interactive Silent": {
+        "$type": "color",
+        "$value": "{Primary Blue.Blue-80}"
+      }
+    },
+    "Negative": {
+      "Negative Loud": {
+        "$type": "color",
+        "$value": "{Semantic Red.Red-60}"
+      },
+      "Negative Silent": {
+        "$type": "color",
+        "$value": "{Semantic Red.Red-80}"
+      }
+    },
+    "Positive": {
+      "Positive Loud": {
+        "$type": "color",
+        "$value": "{Semantic Green.Green-60}"
+      },
+      "Positive Silent": {
+        "$type": "color",
+        "$value": "{Semantic Green.Green-80}"
+      }
+    },
+    "Primary": {
+      "Contrast": {
+        "$type": "color",
+        "$value": "{Neutrals.Neutral-White}"
+      },
+      "Extra Loud": {
+        "$type": "color",
+        "$value": "{Neutrals.Neutral-Gray50}"
+      },
+      "Extra Silent": {
+        "$type": "color",
+        "$value": "{Neutrals.Neutral-Gray90}"
+      },
+      "Loud": {
+        "$type": "color",
+        "$value": "{Neutrals.Neutral-Gray60}"
+      },
+      "Medium": {
+        "$type": "color",
+        "$value": "{Neutrals.Neutral-Gray70}"
+      },
+      "Silent": {
+        "$type": "color",
+        "$value": "{Neutrals.Neutral-Gray80}"
+      }
+    },
+    "Warning": {
+      "Warning Loud": {
+        "$type": "color",
+        "$value": "{Semantic Orange.Orange-60}"
+      },
+      "Warning Silent": {
+        "$type": "color",
+        "$value": "{Semantic Orange.Orange-80}"
+      }
+    }
+  }
+}
